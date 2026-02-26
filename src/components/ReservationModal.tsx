@@ -106,10 +106,16 @@ export default function ReservationModal({ isOpen, onClose }: ReservationModalPr
                                                         id="res-date"
                                                         required
                                                         type="date"
+                                                        min={new Date().toISOString().split("T")[0]}
                                                         className="w-full bg-secondary/5 border-none rounded-2xl px-5 py-4 text-sm font-bold text-secondary focus:ring-2 focus:ring-primary/20 transition-all outline-none"
                                                         value={formData.date}
                                                         onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                                                     />
+                                                    {formData.date && [0, 1].includes(new Date(formData.date).getDay()) && (
+                                                        <p className="text-[10px] font-bold text-red-500 uppercase tracking-widest mt-2 px-1">
+                                                            We are closed on Sun & Mon
+                                                        </p>
+                                                    )}
                                                 </motion.div>
                                                 <motion.div custom={3} variants={formVariants} initial="hidden" animate="visible" className="space-y-2">
                                                     <label htmlFor="res-time" className="text-[10px] font-black uppercase tracking-widest text-secondary/40 flex items-center gap-2">
@@ -166,7 +172,8 @@ export default function ReservationModal({ isOpen, onClose }: ReservationModalPr
                                             <motion.button
                                                 custom={6} variants={formVariants} initial="hidden" animate="visible"
                                                 type="submit"
-                                                className="w-full bg-primary text-white py-5 rounded-2xl font-black text-xs uppercase tracking-[0.3em] shadow-xl shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all mt-6"
+                                                disabled={formData.date ? [0, 1].includes(new Date(formData.date).getDay()) : false}
+                                                className="w-full bg-primary text-white py-5 rounded-2xl font-black text-xs uppercase tracking-[0.3em] shadow-xl shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all mt-6 disabled:opacity-30 disabled:pointer-events-none"
                                             >
                                                 Confirm Reservation
                                             </motion.button>

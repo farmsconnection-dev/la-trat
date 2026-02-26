@@ -222,10 +222,13 @@ export default function Home() {
           </div>
 
           <div className="flex items-center gap-6">
-            <a href="tel:050333060" className="hidden xl:flex items-center gap-2 text-secondary/40 hover:text-secondary transition-colors text-[10px] font-black uppercase tracking-widest">
-              <span className="material-symbols-outlined text-base">call</span>
-              050 33 30 60
-            </a>
+            <div className="hidden xl:flex flex-col items-end gap-1">
+              <a href="tel:050333060" className="flex items-center gap-2 text-secondary/60 hover:text-secondary transition-colors text-[10px] font-black uppercase tracking-widest">
+                <span className="material-symbols-outlined text-base">call</span>
+                050 33 30 60
+              </a>
+              <span className="text-[9px] font-bold text-primary/60 uppercase tracking-widest">Open Tue–Sat: 12:00–21:30</span>
+            </div>
             <button
               onClick={() => setIsReservationOpen(true)}
               className="bg-secondary text-white px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] hover:bg-primary transition-all shadow-lg shadow-secondary/10"
@@ -306,12 +309,32 @@ export default function Home() {
         <section id="gallery" className="max-w-7xl mx-auto px-6">
           <Reveal>
             <div className="flex flex-col md:flex-row gap-12 items-center">
-              <div className="flex-1 space-y-8">
-                <h3 className="text-5xl font-serif text-secondary leading-tight tracking-tighter">Authentic Sicilian <br /><span className="text-primary italic">Heritage.</span></h3>
-                <p className="text-secondary/60 leading-relaxed text-lg font-medium">
-                  Every dish at Trattoria Trium is a testament to our roots. From the sun-drenched flavors
-                  of Sicily to the historic streets of Bruges, we bring you an experience that is bold, honest, and unforgettable.
-                </p>
+              <div className="flex-1 space-y-10">
+                <div className="space-y-6">
+                  <h3 className="text-5xl font-serif text-secondary leading-tight tracking-tighter">Authentic Sicilian <br /><span className="text-primary italic">Heritage.</span></h3>
+                  <p className="text-secondary/60 leading-relaxed text-lg font-medium">
+                    Every dish at Trattoria Trium is a testament to our roots. From the sun-drenched flavors
+                    of Sicily to the historic streets of Bruges, we bring you an experience that is bold, honest, and unforgettable.
+                  </p>
+                </div>
+
+                {/* VISUAL OPENING HOURS BLOCK */}
+                <div className="pt-10 border-t border-secondary/5 grid grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <h6 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary underline underline-offset-8 decoration-primary/20">Kitchen Hours</h6>
+                    <div className="space-y-1">
+                      <p className="text-secondary font-black text-xs uppercase tracking-widest">Tue – Saturday</p>
+                      <p className="text-secondary/40 font-serif text-xl italic">12:00 – 21:30</p>
+                    </div>
+                  </div>
+                  <div className="space-y-3 opacity-40">
+                    <h6 className="text-[10px] font-black uppercase tracking-[0.3em] text-secondary">Rest Days</h6>
+                    <div className="space-y-1">
+                      <p className="text-secondary font-black text-xs uppercase tracking-widest">Sun – Monday</p>
+                      <p className="text-secondary/40 font-serif text-xl italic">Full Closure</p>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div className="flex-1 grid grid-cols-2 gap-4">
                 <div className="rounded-3xl overflow-hidden shadow-xl aspect-square border-4 border-white">
@@ -550,28 +573,22 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/10">
-          © {new Date().getFullYear()} TRATTORIA TRIUM · MADE WITH PASSION FOR AUTHENTIC TASTE
-        </p>
+      </main>
+
+      {/* ─── CENTRAL FLOATING CTA (RESERVE TABLE NOW) ─── */}
+      <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 pointer-events-none w-full max-w-[280px]">
+        <button
+          onClick={() => setIsReservationOpen(true)}
+          className="w-full bg-[#d35400] text-white py-[20px] rounded-full font-bold text-[12px] uppercase tracking-[0.25em] shadow-[0_20px_40px_-10px_rgba(211,84,0,0.6)] hover:shadow-[0_25px_50px_-12px_rgba(211,84,0,0.8)] hover:-translate-y-1 transition-all active:scale-95 pointer-events-auto"
+        >
+          Reserve Table Now
+        </button>
+      </div>
+
+      <ReservationModal
+        isOpen={isReservationOpen}
+        onClose={() => setIsReservationOpen(false)}
+      />
     </div>
-          </div >
-        </footer >
-      </main >
-
-    {/* ─── CENTRAL FLOATING CTA (RESERVE TABLE NOW) ─── */ }
-    < div className = "fixed bottom-10 left-1/2 -translate-x-1/2 z-50 pointer-events-none w-full max-w-[280px]" >
-      <button
-        onClick={() => setIsReservationOpen(true)}
-        className="w-full bg-[#d35400] text-white py-[20px] rounded-full font-bold text-[12px] uppercase tracking-[0.25em] shadow-[0_20px_40px_-10px_rgba(211,84,0,0.6)] hover:shadow-[0_25px_50px_-12px_rgba(211,84,0,0.8)] hover:-translate-y-1 transition-all active:scale-95 pointer-events-auto"
-      >
-        Reserve Table Now
-      </button>
-      </div >
-
-    <ReservationModal
-      isOpen={isReservationOpen}
-      onClose={() => setIsReservationOpen(false)}
-    />
-    </div >
   );
 }
