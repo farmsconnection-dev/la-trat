@@ -178,8 +178,8 @@ export default function Home() {
             {[
               { label: "Home", href: "/" },
               { label: "Menu", href: "#menu" },
-              { label: "Verhaal", href: "#story" },
-              { label: "Galerij", href: "/gallery" },
+              { label: "Story", href: "#story" },
+              { label: "Gallery", href: "/gallery" },
             ].map((item) => (
               <Link key={item.label} href={item.href} className="text-[10px] font-black text-secondary/60 hover:text-primary transition-all tracking-[0.25em] uppercase relative group">
                 {item.label}
@@ -197,7 +197,7 @@ export default function Home() {
               onClick={() => setIsReservationOpen(true)}
               className="bg-secondary text-white px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] hover:bg-primary transition-all shadow-lg shadow-secondary/10"
             >
-              Reserveer
+              Reserve
             </button>
           </div>
         </header>
@@ -213,7 +213,7 @@ export default function Home() {
             <div className="flex-1 text-center lg:text-left">
               <Reveal>
                 <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-black uppercase tracking-[0.2em] mb-8">
-                  Sinds 1993 · Brugge
+                  Since 1993 · Bruges
                 </span>
               </Reveal>
               <Reveal delay={0.2}>
@@ -224,8 +224,8 @@ export default function Home() {
               </Reveal>
               <Reveal delay={0.4}>
                 <p className="text-lg md:text-xl text-secondary/60 max-w-xl mb-10 leading-relaxed font-medium">
-                  Beleef de ziel van Sicilië in het hart van Brugge. Verse pasta,
-                  houtoven pizza&apos;s en een familietraditie die generaties overspant.
+                  Experience the soul of Sicily in the heart of Bruges. Fresh pasta,
+                  wood-fired pizzas, and a family tradition spanning generations.
                 </p>
               </Reveal>
               <Reveal delay={0.6}>
@@ -234,10 +234,10 @@ export default function Home() {
                     onClick={() => setIsReservationOpen(true)}
                     className="px-12 py-5 bg-primary text-white font-black text-[11px] uppercase tracking-[0.3em] rounded-full shadow-2xl shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-1 transition-all active:scale-95"
                   >
-                    Reserveren
+                    Book Table
                   </button>
                   <a href="#menu" className="flex items-center gap-3 text-secondary/50 font-black hover:text-secondary transition-colors group">
-                    <span className="text-[11px] uppercase tracking-[0.2em]">Ontdek Kaart</span>
+                    <span className="text-[11px] uppercase tracking-[0.2em]">Explore Menu</span>
                     <span className="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">east</span>
                   </a>
                 </div>
@@ -249,7 +249,7 @@ export default function Home() {
                 <div className="relative aspect-square">
                   <div className="absolute -top-10 -right-10 w-40 h-40 bg-white shadow-2xl rounded-3xl -rotate-6 z-10 flex items-center justify-center p-4">
                     <div className="text-center">
-                      <p className="text-xs font-black text-primary uppercase mb-1">Authentiek</p>
+                      <p className="text-xs font-black text-primary uppercase mb-1">Authentic</p>
                       <p className="text-2xl font-serif text-secondary italic">Recipes</p>
                     </div>
                   </div>
@@ -276,29 +276,19 @@ export default function Home() {
               <div className="flex-1 space-y-8">
                 <h3 className="text-5xl font-serif text-secondary leading-tight tracking-tighter">Authentic Sicilian <br /><span className="text-primary italic">Heritage.</span></h3>
                 <p className="text-secondary/60 leading-relaxed text-lg font-medium">
-                  Elk gerecht bij Trattoria Trium is een testament aan onze roots. Van de zongestoofde smaken
-                  van Sicilië tot de historische straatjes van Brugge.
+                  Every dish at Trattoria Trium is a testament to our roots. From the sun-drenched flavors
+                  of Sicily to the historic streets of Bruges, we bring you an experience that is bold, honest, and unforgettable.
                 </p>
-                <div className="grid grid-cols-2 gap-8">
-                  <div className="space-y-2">
-                    <h5 className="font-black text-[10px] uppercase tracking-widest text-primary">Locatie</h5>
-                    <p className="text-sm text-secondary/80 font-bold">Academiestraat 23<br />8000 Brugge</p>
-                  </div>
-                  <div className="space-y-2">
-                    <h5 className="font-black text-[10px] uppercase tracking-widest text-primary">Check-in</h5>
-                    <p className="text-sm text-secondary/80 font-bold">Di – Za<br />12h – 21:30h</p>
-                  </div>
-                </div>
               </div>
-              <div className="flex-1 relative h-[500px] w-full">
-                {/* Main "Beautiful" Exterior Photo */}
-                <div className="absolute top-0 left-0 w-[85%] h-[85%] rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white z-10">
-                  <img src="/images/trium-exterior.jpg" className="w-full h-full object-cover" alt="Trattoria Trium Exterior" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-secondary/20 to-transparent" />
+              <div className="flex-1 grid grid-cols-2 gap-4">
+                <div className="rounded-3xl overflow-hidden shadow-xl aspect-square border-4 border-white">
+                  <img src="/images/trium-exterior.jpg" alt="Exterior" className="w-full h-full object-cover" />
                 </div>
-                {/* Secondary Interior Photo as elegant overlapping detail */}
-                <div className="absolute bottom-0 right-0 w-1/2 aspect-square rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white z-20 hover:-translate-y-4 transition-transform duration-500">
-                  <img src="/images/trium-interior.jpg" className="w-full h-full object-cover" alt="Atmosphere" />
+                <div className="rounded-3xl overflow-hidden shadow-xl aspect-square border-4 border-white">
+                  <img src="/images/trium-team.jpg" alt="Team" className="w-full h-full object-cover" />
+                </div>
+                <div className="col-span-2 rounded-3xl overflow-hidden shadow-xl aspect-[2/1] border-4 border-white">
+                  <img src="/images/trium-interior.jpg" alt="Interior" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
@@ -308,7 +298,7 @@ export default function Home() {
         {/* ─── LUNCH DEALS ─── */}
         <section className="max-w-7xl mx-auto px-6">
           <Reveal>
-            <SectionTitle icon="sunny" title="Pranzo Delizioso" subtitle="VERFIJNDE LUNCH SELECTIES VOOR DE MIDDAG" />
+            <SectionTitle icon="sunny" title="Pranzo Delizioso" subtitle="REFINED LUNCH SELECTIONS FOR THE AFTERNOON" />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
               {LUNCH_DEALS.map((deal) => (
                 <div key={deal.title} className="group relative bg-white border border-secondary/5 rounded-[3rem] p-10 hover:shadow-2xl hover:shadow-secondary/5 transition-all">
@@ -333,7 +323,7 @@ export default function Home() {
         <section id="specials" className="py-32 bg-secondary/[0.02] border-y border-secondary/5">
           <div className="max-w-7xl mx-auto px-6">
             <Reveal>
-              <SectionTitle icon="local_pizza" title="Onze Signature Pizza" subtitle="MET DE HAND GEROST, IN STEENOVEN GEBAKKEN" />
+              <SectionTitle icon="local_pizza" title="Our Signature Pizza" subtitle="HAND-STRETCHED, STONE-OVEN FIRED" />
             </Reveal>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
@@ -405,7 +395,7 @@ export default function Home() {
         {/* ─── LA CARTA (FULL MENU) ─── */}
         <section id="menu" className="max-w-5xl mx-auto px-6">
           <Reveal>
-            <SectionTitle icon="menu_book" title="La Nostra Carta" subtitle="VERKEN DE VOLLEDIGE DIEPTE VAN ONZE KEUKEN" />
+            <SectionTitle icon="menu_book" title="La Nostra Carta" subtitle="EXPLORE THE FULL DEPTH OF OUR KITCHEN" />
             <div className="flex bg-secondary/5 rounded-full p-2 mb-12 max-w-2xl mx-auto">
               {(["antipasti", "pizza", "pasta", "dolci"] as const).map((tab) => (
                 <button
@@ -418,14 +408,14 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {(menuTab === "pizza" ? PIZZAS : menuTab === "pasta" ? PASTAS : menuTab === "antipasti" ? ANTIPASTI : DESSERTS).map((item) => (
-                <div key={item.name} className="bg-white rounded-[2rem] p-5 border border-secondary/5 flex items-center gap-6 hover:shadow-xl hover:shadow-secondary/5 transition-all group">
-                  <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-inner bg-secondary/5 shrink-0">
+                <div key={item.name} className="bg-white rounded-[2.5rem] p-6 border border-secondary/5 flex items-center gap-8 hover:shadow-2xl hover:shadow-secondary/5 transition-all group">
+                  <div className="w-32 h-32 rounded-[2rem] overflow-hidden shadow-lg bg-secondary/5 shrink-0 border-2 border-white">
                     <img src={item.img} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
+                    <div className="flex items-center gap-3 mb-2">
                       <h4 className="text-lg font-serif text-secondary italic tracking-tight truncate">{item.name}</h4>
                       {"tag" in item && <TagBadge type={(item as any).tag} />}
                     </div>
@@ -449,12 +439,12 @@ export default function Home() {
           <div className="relative max-w-4xl mx-auto px-6 text-center">
             <Reveal>
               <span className="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary text-[10px] font-black uppercase tracking-[0.4em] mb-12">
-                SINDS 1993
+                SINCE 1993
               </span>
               <h3 className="text-6xl md:text-7xl font-serif mb-12 italic leading-tight tracking-tighter">La Famiglia è tutto.</h3>
               <p className="text-white/40 text-xl leading-relaxed font-light mb-16 max-w-2xl mx-auto">
-                Van Gabriele&apos;s passie voor de perfecte deeg tot Noemi&apos;s artisanale gebakjes.
-                Trattoria Trium is een gedeelde tafel waar Sicilië en Brugge elkaar ontmoeten.
+                From Gabriele&apos;s passion for the perfect dough to Noemi&apos;s artisanal pastries,
+                Trattoria Trium is more than a restaurant. It&apos;s a shared table where the soul of Sicily meets the heart of Bruges.
               </p>
               <div className="flex flex-col md:flex-row items-center justify-center gap-16 pt-12 border-t border-white/10 uppercase tracking-[0.2em] font-black text-[10px]">
                 <div className="space-y-4">
@@ -462,7 +452,7 @@ export default function Home() {
                   <p className="text-lg font-serif normal-case tracking-normal">trattoria.trium@skynet.be</p>
                 </div>
                 <div className="space-y-4">
-                  <h6 className="text-primary opacity-50">Bel Ons</h6>
+                  <h6 className="text-primary opacity-50">Direct</h6>
                   <p className="text-lg font-serif normal-case tracking-normal">050 33 30 60</p>
                 </div>
               </div>
@@ -470,62 +460,42 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── ORIGINAL LIGHT FOOTER ─── */}
-        <footer className="bg-[#fffdfa] pt-24 pb-12 relative border-t border-secondary/5">
-          <div className="max-w-7xl mx-auto px-6 relative">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 mb-20 items-start">
+        {/* ─── SINGLE PREMIUM DARK FOOTER ─── */}
+        <footer className="bg-secondary text-white pt-24 pb-12 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full opacity-[0.02] pointer-events-none">
+            <div className="absolute inset-0 dot-pattern" />
+          </div>
 
-              {/* Logo & Intro */}
-              <div className="md:col-span-4 space-y-6">
-                <a href="#home" className="inline-block">
-                  <h1 className="text-3xl font-serif font-black tracking-tighter text-secondary">
+          <div className="max-w-7xl mx-auto px-6 relative">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 items-start">
+
+              {/* Logo & Intro (Left) */}
+              <div className="space-y-6">
+                <a href="#home" className="inline-block group">
+                  <h1 className="text-3xl font-serif font-black tracking-tighter">
                     TRATTORIA<span className="text-primary">TRIUM.</span>
                   </h1>
                 </a>
-                <p className="text-secondary/50 text-[15px] leading-relaxed max-w-[260px] font-medium">
+                <p className="text-white/40 text-[15px] leading-relaxed max-w-[300px] font-medium">
                   Sicilian soul, Bruges heart.<br />
                   Crafting authentic Italian moments since 1993.
                 </p>
               </div>
 
-              {/* Menu Links */}
-              <div className="md:col-span-2">
-                <h5 className="font-bold text-[10px] uppercase tracking-[0.2em] text-secondary/40 mb-6">Menu</h5>
-                <ul className="space-y-4 text-[15px] font-medium text-secondary/70">
-                  <li><a href="#specials" className="hover:text-primary transition-colors">Pizza Selection</a></li>
-                  <li><a href="#menu" className="hover:text-primary transition-colors">House Pasta</a></li>
-                  <li><Link href="/gallery" className="hover:text-primary transition-colors">Dolci & Wines</Link></li>
-                </ul>
-              </div>
-
-              {/* Connect Links */}
-              <div className="md:col-span-2">
-                <h5 className="font-bold text-[10px] uppercase tracking-[0.2em] text-secondary/40 mb-6">Connect</h5>
-                <ul className="space-y-4 text-[15px] font-medium text-secondary/70">
+              {/* Connect Links (Right-aligned on desktop) */}
+              <div className="md:text-right">
+                <h5 className="font-bold text-[10px] uppercase tracking-[0.2em] text-primary mb-6">Connect</h5>
+                <ul className="space-y-4 text-[15px] font-medium text-white/40">
                   <li><a href="#" className="hover:text-primary transition-colors">Instagram</a></li>
                   <li><a href="#" className="hover:text-primary transition-colors">Facebook</a></li>
                   <li><a href="mailto:trattoria.trium@skynet.be" className="hover:text-primary transition-colors">Contact Us</a></li>
                 </ul>
               </div>
-
-              {/* Visit Us Box */}
-              <div className="md:col-span-4">
-                <div className="bg-secondary text-white p-8 rounded-[2rem] shadow-xl relative overflow-hidden group">
-                  <h5 className="font-bold text-[10px] uppercase tracking-[0.2em] text-primary mb-6">Visit Us</h5>
-                  <p className="text-[15px] font-serif leading-relaxed mb-6">
-                    Academiestraat 23 <br />
-                    8000 Brugge, Belgium
-                  </p>
-                  <p className="text-[13px] text-white/60">
-                    Open Di – Za, 12:00 – 21:30
-                  </p>
-                </div>
-              </div>
             </div>
 
             {/* Bottom Copyright Bar */}
-            <div className="pt-8 border-t border-secondary/10 text-center">
-              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary/30">
+            <div className="pt-8 border-t border-white/5 text-center">
+              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/10">
                 © {new Date().getFullYear()} TRATTORIA TRIUM · MADE WITH PASSION FOR AUTHENTIC TASTE
               </p>
             </div>
@@ -537,7 +507,7 @@ export default function Home() {
       <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 pointer-events-none w-full max-w-[280px]">
         <button
           onClick={() => setIsReservationOpen(true)}
-          className="w-full bg-[#d35400] text-white py-[18px] rounded-full font-bold text-[12px] uppercase tracking-[0.25em] shadow-[0_15px_30px_-10px_rgba(211,84,0,0.6)] hover:shadow-[0_20px_40px_-12px_rgba(211,84,0,0.8)] hover:-translate-y-1 transition-all active:scale-95 pointer-events-auto"
+          className="w-full bg-[#d35400] text-white py-[20px] rounded-full font-bold text-[12px] uppercase tracking-[0.25em] shadow-[0_20px_40px_-10px_rgba(211,84,0,0.6)] hover:shadow-[0_25px_50px_-12px_rgba(211,84,0,0.8)] hover:-translate-y-1 transition-all active:scale-95 pointer-events-auto"
         >
           Reserve Table Now
         </button>
