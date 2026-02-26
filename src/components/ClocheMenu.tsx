@@ -166,8 +166,8 @@ function DishCard({ dish }: { dish: (typeof PASTA_MENU)[0] }) {
                 <motion.div
                     className="absolute left-1/2 -translate-x-1/2 rounded-full overflow-hidden z-10"
                     style={{
-                        width: "180px",
-                        height: "180px",
+                        width: "220px",
+                        height: "220px",
                         bottom: "6px", // Sitting perfectly in the plate well
                     }}
                     initial={false}

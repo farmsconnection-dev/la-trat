@@ -464,21 +464,21 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
               {(menuTab === "pizza" ? PIZZAS : menuTab === "pasta" ? PASTAS : menuTab === "antipasti" ? ANTIPASTI : DESSERTS).map((item) => (
-                <div key={item.name} className="bg-white rounded-[4rem] p-10 border border-secondary/5 flex flex-col sm:flex-row items-center gap-12 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.1)] transition-all group">
-                  <div className="w-56 h-56 rounded-[3rem] overflow-hidden shadow-2xl bg-secondary/5 shrink-0 border-8 border-white group-hover:rotate-2 transition-transform duration-700">
+                <div key={item.name} className="bg-white rounded-[4rem] p-12 border border-secondary/5 flex flex-col items-center gap-10 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.1)] transition-all group">
+                  <div className="w-56 h-56 rounded-[3.5rem] overflow-hidden shadow-2xl bg-secondary/5 shrink-0 border-8 border-white group-hover:rotate-3 transition-transform duration-700">
                     <img src={item.img} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   </div>
-                  <div className="flex-1 text-center sm:text-left">
-                    <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4 mb-4">
-                      <div className="flex items-center gap-3">
-                        <h4 className="text-2xl font-serif text-secondary italic tracking-tight">{item.name}</h4>
-                        {"tag" in item && <TagBadge type={(item as any).tag} />}
-                      </div>
-                      <span className="text-3xl font-serif text-primary">{item.price}</span>
+                  <div className="text-center space-y-4">
+                    <div className="flex flex-col items-center gap-2">
+                      {"tag" in item && <TagBadge type={(item as any).tag} />}
+                      <h4 className="text-3xl font-serif text-secondary italic tracking-tight">{item.name}</h4>
                     </div>
-                    <p className="text-secondary/40 text-[12px] font-bold leading-relaxed uppercase tracking-widest">{item.desc}</p>
+                    <p className="text-secondary/40 text-[12px] font-bold leading-relaxed uppercase tracking-[0.2em] max-w-[200px] mx-auto">{item.desc}</p>
+                    <div className="pt-4">
+                      <span className="text-4xl font-serif text-primary font-light">{item.price}</span>
+                    </div>
                   </div>
                 </div>
               ))}
