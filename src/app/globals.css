@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-display: "Plus Jakarta Sans", sans-serif;
+
+  --color-primary: #d35400;
+  /* Sicilian Terracotta */
+  --color-secondary: #2c3e50;
+  /* Midnight Charcoal */
+  --color-background-light: #fdfaf7;
+  /* Bone White */
+  --color-background-dark: #1a1514;
+
+  --radius-DEFAULT: 1.25rem;
+  --radius-lg: 2.5rem;
+  --radius-xl: 4rem;
+
+  --spacing-section: 6rem;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    @apply bg-background-light text-secondary antialiased;
+    min-height: max(884px, 100dvh);
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-serif {
+    font-family: var(--font-serif);
+    @apply tracking-tight;
+  }
+}
+
+@layer utilities {
+  .glass-nav {
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    background-color: rgba(248, 246, 245, 0.8);
+  }
+
+  .pizza-box-scene {
+    perspective: 800px;
+    perspective-origin: center 60%;
+    transform-style: preserve-3d;
+  }
+
+  .pizza-box-lid {
+    transform-origin: top center;
+    transition: transform 0.9s cubic-bezier(0.23, 1, 0.32, 1),
+      box-shadow 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+    will-change: transform;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .pizza-box-open .pizza-box-lid {
+    transform: rotateX(75deg);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .fill-icon {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+
+  @keyframes fadeSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-slide {
+    animation: fadeSlideIn 0.4s ease-out forwards;
+  }
+
+  .kraft-texture {
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(139, 69, 19, 0.3) 8px, rgba(139, 69, 19, 0.3) 9px);
+  }
+
+  .corner-fold {
+    clip-path: polygon(100% 0, 0 0, 100% 100%);
+  }
+
+  .dot-pattern {
+    background-image: radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0);
+    background-size: 40px 40px;
+  }
+}
