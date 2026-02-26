@@ -168,7 +168,7 @@ function DishCard({ dish }: { dish: (typeof PASTA_MENU)[0] }) {
                     style={{
                         width: "180px",
                         height: "180px",
-                        bottom: `${plateH / 2 - 15}px`, // sits on the plate surface
+                        bottom: "6px", // Sitting perfectly in the plate well
                     }}
                     initial={false}
                     animate={{
