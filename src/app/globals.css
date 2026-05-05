@@ -5,46 +5,65 @@ html {
 }
 
 @theme {
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-serif: "Playfair Display", serif;
-  --font-display: "Plus Jakarta Sans", sans-serif;
+  --font-script: "Satisfy", cursive;
 
-  --color-primary: #d35400;
-  /* Sicilian Terracotta */
-  --color-secondary: #2c3e50;
-  /* Midnight Charcoal */
-  --color-background-light: #fdfaf7;
-  /* Bone White */
-  --color-background-dark: #1a1514;
+  /* Premium Palette */
+  --color-primary: #c58a58;
+  /* Gold/Brass */
+  --color-secondary: #1a1a2e;
+  /* Deep Midnight / Charcoal */
+  --color-accent: #2d3025;
+  /* Deep Olive */
+  --color-background-white: #fdfcfb;
+  /* Off-white / Cream */
+  --color-background-dark: #0a0d10;
 
-  --radius-DEFAULT: 1.25rem;
+  --radius-DEFAULT: 1.5rem;
   --radius-lg: 2.5rem;
   --radius-xl: 4rem;
 
-  --spacing-section: 6rem;
+  --spacing-section: clamp(4rem, 10vw, 12rem);
 }
 
 @layer base {
   body {
     font-family: var(--font-sans);
-    @apply bg-background-light text-secondary antialiased;
-    min-height: max(884px, 100dvh);
+    @apply bg-background-dark text-white/90 antialiased;
+    line-height: 1.7;
+    min-height: 100dvh;
+  }
+
+  ::selection {
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  /* Smooth transitions for all interactive elements */
+  button,
+  a {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   h1,
   h2,
   h3,
+  h4,
+  h5,
+  h6,
   .font-serif {
     font-family: var(--font-serif);
-    @apply tracking-tight;
+    @apply tracking-tighter leading-tight;
   }
 }
 
 @layer utilities {
   .glass-nav {
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-    background-color: rgba(248, 246, 245, 0.8);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    background-color: rgba(10, 13, 16, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
 
   .pizza-box-scene {

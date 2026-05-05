@@ -60,18 +60,18 @@ export default function ReservationModal({ isOpen, onClose }: ReservationModalPr
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.9, y: 40 }}
                         transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                        className="relative w-full max-w-xl bg-white rounded-[3rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] overflow-hidden"
+                        className="relative w-full max-w-xl bg-background-dark/95 backdrop-blur-2xl rounded-[3.5rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden border border-white/5"
                     >
                         {/* Close Button */}
                         <button
                             onClick={onClose}
                             aria-label="Close Reservation Modal"
-                            className="absolute top-8 right-8 w-12 h-12 rounded-full border border-secondary/5 flex items-center justify-center hover:bg-secondary/5 transition-colors z-10"
+                            className="absolute top-6 right-6 md:top-10 md:right-10 w-12 h-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-md flex items-center justify-center hover:bg-primary hover:text-secondary group transition-all duration-300 z-[60] shadow-2xl"
                         >
-                            <X className="w-5 h-5 text-secondary" />
+                            <X className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
                         </button>
 
-                        <div className="p-10 sm:p-12">
+                        <div className="p-10 sm:p-14">
                             <AnimatePresence mode="wait">
                                 {step === "form" ? (
                                     <motion.div
@@ -79,27 +79,27 @@ export default function ReservationModal({ isOpen, onClose }: ReservationModalPr
                                         initial={{ opacity: 0, x: -20 }}
                                         animate={{ opacity: 1, x: 0 }}
                                         exit={{ opacity: 0, x: 20 }}
-                                        className="space-y-10"
+                                        className="space-y-12"
                                     >
-                                        <div className="space-y-2">
+                                        <div className="space-y-3">
                                             <motion.h2
                                                 custom={0} variants={formVariants} initial="hidden" animate="visible"
-                                                className="text-4xl font-serif text-secondary"
+                                                className="text-5xl font-serif text-white tracking-tight"
                                             >
-                                                Prenota un <span className="text-primary italic">Tavolo.</span>
+                                                Prenota un <span className="text-primary italic font-light">Tavolo.</span>
                                             </motion.h2>
                                             <motion.p
                                                 custom={1} variants={formVariants} initial="hidden" animate="visible"
-                                                className="text-secondary/50 text-sm font-medium"
+                                                className="text-white/40 text-[11px] font-bold uppercase tracking-[0.3em]"
                                             >
-                                                Join us for an authentic Sicilian experience in the heart of Bruges.
+                                                AUTHENTIC SICILIAN EXPERIENCE · BRUGES
                                             </motion.p>
                                         </div>
 
-                                        <form onSubmit={handleSubmit} className="space-y-6">
-                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                                <motion.div custom={2} variants={formVariants} initial="hidden" animate="visible" className="space-y-2">
-                                                    <label htmlFor="res-date" className="text-[10px] font-black uppercase tracking-widest text-secondary/40 flex items-center gap-2">
+                                        <form onSubmit={handleSubmit} className="space-y-8">
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                                                <motion.div custom={2} variants={formVariants} initial="hidden" animate="visible" className="space-y-3">
+                                                    <label htmlFor="res-date" className="text-[10px] font-black uppercase tracking-widest text-primary/60 flex items-center gap-2">
                                                         <Calendar className="w-3 h-3" /> Date
                                                     </label>
                                                     <input
@@ -107,48 +107,48 @@ export default function ReservationModal({ isOpen, onClose }: ReservationModalPr
                                                         required
                                                         type="date"
                                                         min={new Date().toISOString().split("T")[0]}
-                                                        className="w-full bg-secondary/5 border-none rounded-2xl px-5 py-4 text-sm font-bold text-secondary focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+                                                        className="w-full bg-white/5 border border-white/5 rounded-2xl px-6 py-5 text-sm font-bold text-white focus:ring-2 focus:ring-primary/20 transition-all outline-none"
                                                         value={formData.date}
                                                         onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                                                     />
                                                     {formData.date && [0, 1].includes(new Date(formData.date).getDay()) && (
-                                                        <p className="text-[10px] font-bold text-red-500 uppercase tracking-widest mt-2 px-1">
+                                                        <p className="text-[10px] font-bold text-red-400 uppercase tracking-widest mt-2 px-1">
                                                             We are closed on Sun & Mon
                                                         </p>
                                                     )}
                                                 </motion.div>
-                                                <motion.div custom={3} variants={formVariants} initial="hidden" animate="visible" className="space-y-2">
-                                                    <label htmlFor="res-time" className="text-[10px] font-black uppercase tracking-widest text-secondary/40 flex items-center gap-2">
+                                                <motion.div custom={3} variants={formVariants} initial="hidden" animate="visible" className="space-y-3">
+                                                    <label htmlFor="res-time" className="text-[10px] font-black uppercase tracking-widest text-primary/60 flex items-center gap-2">
                                                         <Clock className="w-3 h-3" /> Time
                                                     </label>
                                                     <select
                                                         id="res-time"
                                                         required
-                                                        className="w-full bg-secondary/5 border-none rounded-2xl px-5 py-4 text-sm font-bold text-secondary focus:ring-2 focus:ring-primary/20 transition-all outline-none appearance-none"
+                                                        className="w-full bg-white/5 border border-white/5 rounded-2xl px-6 py-5 text-sm font-bold text-white focus:ring-2 focus:ring-primary/20 transition-all outline-none appearance-none"
                                                         value={formData.time}
                                                         onChange={(e) => setFormData({ ...formData, time: e.target.value })}
                                                     >
-                                                        <option value="">Select time</option>
-                                                        <option value="12:00">12:00</option>
-                                                        <option value="13:00">13:00</option>
-                                                        <option value="18:00">18:00</option>
-                                                        <option value="19:00">19:00</option>
-                                                        <option value="20:00">20:00</option>
+                                                        <option value="" className="bg-secondary">Select time</option>
+                                                        <option value="12:00" className="bg-secondary">12:00</option>
+                                                        <option value="13:00" className="bg-secondary">13:00</option>
+                                                        <option value="18:00" className="bg-secondary">18:00</option>
+                                                        <option value="19:00" className="bg-secondary">19:00</option>
+                                                        <option value="20:00" className="bg-secondary">20:00</option>
                                                     </select>
                                                 </motion.div>
                                             </div>
 
-                                            <motion.div custom={4} variants={formVariants} initial="hidden" animate="visible" className="space-y-2">
-                                                <label className="text-[10px] font-black uppercase tracking-widest text-secondary/40 flex items-center gap-2">
+                                            <motion.div custom={4} variants={formVariants} initial="hidden" animate="visible" className="space-y-3">
+                                                <label className="text-[10px] font-black uppercase tracking-widest text-primary/60 flex items-center gap-2">
                                                     <Users className="w-3 h-3" /> Guests
                                                 </label>
-                                                <div className="grid grid-cols-4 gap-3">
+                                                <div className="grid grid-cols-4 gap-4">
                                                     {["1", "2", "3", "4+"].map((num) => (
                                                         <button
                                                             key={num}
                                                             type="button"
                                                             onClick={() => setFormData({ ...formData, guests: num })}
-                                                            className={`py-3 rounded-xl text-sm font-black transition-all ${formData.guests === num ? "bg-primary text-white shadow-lg shadow-primary/25" : "bg-secondary/5 text-secondary/40 hover:bg-secondary/10"}`}
+                                                            className={`py-4 rounded-xl text-[10px] font-black tracking-widest uppercase transition-all ${formData.guests === num ? "bg-primary text-secondary shadow-lg shadow-primary/20" : "bg-white/5 text-white/30 hover:bg-white/10"}`}
                                                         >
                                                             {num}
                                                         </button>
@@ -156,14 +156,14 @@ export default function ReservationModal({ isOpen, onClose }: ReservationModalPr
                                                 </div>
                                             </motion.div>
 
-                                            <motion.div custom={5} variants={formVariants} initial="hidden" animate="visible" className="space-y-2">
-                                                <label htmlFor="res-name" className="text-[10px] font-black uppercase tracking-widest text-secondary/40">Full Name</label>
+                                            <motion.div custom={5} variants={formVariants} initial="hidden" animate="visible" className="space-y-3">
+                                                <label htmlFor="res-name" className="text-[10px] font-black uppercase tracking-widest text-primary/60">Full Name</label>
                                                 <input
                                                     id="res-name"
                                                     required
                                                     type="text"
                                                     placeholder="Gabriele Trium"
-                                                    className="w-full bg-secondary/5 border-none rounded-2xl px-5 py-4 text-sm font-bold text-secondary focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+                                                    className="w-full bg-white/5 border border-white/5 rounded-2xl px-6 py-5 text-sm font-bold text-white placeholder-white/10 focus:ring-2 focus:ring-primary/20 transition-all outline-none font-sans"
                                                     value={formData.name}
                                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                                 />
@@ -173,7 +173,7 @@ export default function ReservationModal({ isOpen, onClose }: ReservationModalPr
                                                 custom={6} variants={formVariants} initial="hidden" animate="visible"
                                                 type="submit"
                                                 disabled={formData.date ? [0, 1].includes(new Date(formData.date).getDay()) : false}
-                                                className="w-full bg-primary text-white py-5 rounded-2xl font-black text-xs uppercase tracking-[0.3em] shadow-xl shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all mt-6 disabled:opacity-30 disabled:pointer-events-none"
+                                                className="w-full bg-primary text-secondary py-6 rounded-2xl font-black text-[10px] uppercase tracking-[0.4em] shadow-xl shadow-primary/10 hover:bg-white hover:-translate-y-0.5 transition-all mt-8 disabled:opacity-20 disabled:pointer-events-none"
                                             >
                                                 Confirm Reservation
                                             </motion.button>
@@ -184,21 +184,21 @@ export default function ReservationModal({ isOpen, onClose }: ReservationModalPr
                                         key="success"
                                         initial={{ opacity: 0, scale: 0.9 }}
                                         animate={{ opacity: 1, scale: 1 }}
-                                        className="text-center py-10 space-y-8"
+                                        className="text-center py-12 space-y-10"
                                     >
-                                        <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-10">
+                                        <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-10 border border-primary/20">
                                             <CheckCircle2 className="w-12 h-12 text-primary" />
                                         </div>
-                                        <div className="space-y-4">
-                                            <h2 className="text-5xl font-serif text-secondary italic">Grazie Mille!</h2>
-                                            <p className="text-secondary/50 text-lg max-w-xs mx-auto">
+                                        <div className="space-y-5">
+                                            <h2 className="text-6xl font-serif text-white italic tracking-tight font-light">Grazie <span className="text-primary not-italic font-bold">Mille!</span></h2>
+                                            <p className="text-white/40 text-[11px] font-bold uppercase tracking-[0.3em] max-w-xs mx-auto leading-loose">
                                                 Your table for {formData.guests} has been requested for {formData.date} at {formData.time}.
                                             </p>
                                         </div>
                                         <div className="pt-10">
                                             <button
                                                 onClick={onClose}
-                                                className="px-12 py-4 border-2 border-secondary/10 rounded-full text-xs font-black uppercase tracking-widest text-secondary hover:bg-secondary hover:text-white transition-all"
+                                                className="px-12 py-4 border border-white/10 rounded-full text-[9px] font-bold uppercase tracking-widest text-white/40 hover:bg-white hover:text-secondary transition-all"
                                             >
                                                 Close Window
                                             </button>
@@ -209,7 +209,7 @@ export default function ReservationModal({ isOpen, onClose }: ReservationModalPr
                         </div>
 
                         {/* Decorative bottom bar */}
-                        <div className="h-2 bg-gradient-to-r from-primary to-primary/60 w-full" />
+                        <div className="h-2 bg-primary w-full opacity-50" />
                     </motion.div>
                 </motion.div>
             )}

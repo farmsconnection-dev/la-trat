@@ -5,36 +5,61 @@ import { ArrowLeft, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
+function Logo({ className = "", light = true }: { className?: string; light?: boolean }) {
+    return (
+        <div className={`flex flex-col ${className} group`}>
+            <div className="relative">
+                <div className="absolute -top-1 md:-top-2 left-0 w-full h-[1px] md:h-[2px] flex opacity-70 group-hover:opacity-100 transition-all duration-700">
+                    <div className="w-1/6 h-full bg-[#009246]" />
+                    <div className="flex-1 h-full bg-white/10" />
+                    <div className="w-1/6 h-full bg-[#ce2b37]" />
+                </div>
+                <span className={`font-script text-3xl md:text-4xl lg:text-5xl ${light ? 'text-white' : 'text-background-dark'} block leading-none pt-2`}>
+                    Trium
+                </span>
+            </div>
+            <div className={`flex items-center gap-1.5 md:gap-2 mt-1 md:mt-2 px-1 opacity-40 group-hover:opacity-70 transition-all duration-700 whitespace-nowrap ${light ? 'text-white' : 'text-background-dark'}`}>
+                <span className="text-[5px] md:text-[7px] font-black uppercase tracking-[0.5em]">Bruges Trattoria</span>
+                <div className="w-1 h-1 rounded-full bg-primary/40" />
+                <span className="text-[5px] md:text-[7px] font-black uppercase tracking-[0.5em]">Since 1993</span>
+            </div>
+        </div>
+    );
+}
+
 const GALLERY_IMAGES = [
-    { src: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&h=1000&fit=crop", alt: "Signature Pizza" },
-    { src: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=800&h=1000&fit=crop", alt: "Fresh Pasta" },
-    { src: "https://images.unsplash.com/photo-1544025162-d76694265947?w=800&h=600&fit=crop", alt: "Italian Starters" },
-    { src: "https://images.unsplash.com/photo-1600028068956-9876f8e7706b?w=800&h=800&fit=crop", alt: "Our Kitchen" },
-    { src: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&h=1000&fit=crop", alt: "Authentic Ingredients" },
-    { src: "https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?w=800&h=1200&fit=crop", alt: "Veggie Delight" },
-    { src: "https://images.unsplash.com/photo-1595854341625-f33ee10dbf94?w=800&h=600&fit=crop", alt: "Pizza Night" },
-    { src: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=800&h=1000&fit=crop", alt: "The Secret Sauce" },
-    { src: "https://images.unsplash.com/photo-1612874742237-6526221588e3?w=800&h=800&fit=crop", alt: "Traditional Serving" },
+    { src: "/images/gallery-storefront.png", alt: "Authentic Storefront" },
+    { src: "/images/gallery/fb_vongole.jpg", alt: "Spaghetti alle Vongole" },
+    { src: "/images/gallery-interior.jpg", alt: "Sicilian Interior" },
+    { src: "/images/gallery/fb_pizza.jpg", alt: "Gourmet Pizza Bresaola" },
+    { src: "/images/gallery-buffet.jpg", alt: "Antipasti Buffet" },
+    { src: "/images/gallery-salad.jpg", alt: "Burrata & Beetroot" },
+    { src: "/images/gallery/crostata.png", alt: "Crostata di Marmellata" },
+    { src: "/images/gallery-pasta.jpg", alt: "Handmade Pasta" },
+    { src: "/images/gallery/fb_baba.jpg", alt: "Baba au Rhum Speciale" },
+    { src: "/images/kitchen-flame.jpg", alt: "The Sicilian Fire" },
+    { src: "/images/gallery-press.png", alt: "HLN Featured" },
+    { src: "/images/gallery-suggestie.jpg", alt: "Chef's Suggestion" },
+    { src: "/images/gallery-tart.jpg", alt: "Artisanal Tart" },
+    { src: "/images/kitchen-heritage.jpg", alt: "Kitchen Heritage" },
 ];
 
 export default function GalleryPage() {
     const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
     return (
-        <div className="min-h-screen bg-background-light selection:bg-primary/10 selection:text-primary">
+        <div className="min-h-screen bg-background-dark selection:bg-primary/20 selection:text-white overflow-hidden">
             {/* ─── FIXED HEADER ─── */}
             <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center p-4 md:p-8 pointer-events-none">
-                <header className="flex w-full max-w-5xl items-center justify-between glass-nav px-6 md:px-10 py-4 rounded-full border border-white/40 shadow-2xl shadow-secondary/10 pointer-events-auto">
-                    <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-                        <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 rotate-3">
+                <header className="flex w-full max-w-5xl items-center justify-between backdrop-blur-2xl bg-background-dark/80 border border-white/5 shadow-2xl px-6 md:px-10 py-4 rounded-full pointer-events-auto">
+                    <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity group">
+                        <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 rotate-3 group-hover:rotate-6 transition-transform">
                             <span className="material-symbols-outlined text-white text-2xl">arrow_back</span>
                         </div>
-                        <span className="text-sm font-black uppercase tracking-widest text-secondary hidden sm:inline">Back to Home</span>
+                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 group-hover:text-white transition-colors hidden sm:inline font-sans">Back to Home</span>
                     </Link>
-                    <div className="flex-1 text-center">
-                        <h1 className="text-xl md:text-2xl font-serif font-bold tracking-tight text-secondary">
-                            LA <span className="text-primary italic">GALLERIA.</span>
-                        </h1>
+                    <div className="flex-1 text-center scale-75 md:scale-95">
+                        <Logo className="items-center" />
                     </div>
                     <div className="w-10 h-10 invisible" /> {/* Spacer for centering */}
                 </header>
@@ -51,17 +76,17 @@ export default function GalleryPage() {
                     {GALLERY_IMAGES.map((img, i) => (
                         <motion.div
                             key={i}
-                            className="relative rounded-3xl overflow-hidden cursor-pointer group break-inside-avoid border-4 border-white shadow-xl hover:shadow-2xl transition-all"
+                            className="relative rounded-3xl overflow-hidden cursor-pointer group break-inside-avoid border-8 border-white/5 bg-white/5 shadow-2xl hover:border-primary/20 transition-all"
                             whileHover={{ y: -5 }}
                             onClick={() => setSelectedImage(i)}
                         >
                             <img
                                 src={img.src}
                                 alt={img.alt}
-                                className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
+                                className="w-full h-auto object-cover brightness-90 group-hover:brightness-100 group-hover:scale-110 transition-all duration-[1.5s]"
                             />
-                            <div className="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/40 transition-colors duration-500 flex items-center justify-center">
-                                <span className="text-white font-serif italic text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <div className="absolute inset-0 bg-gradient-to-t from-background-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex items-end p-8">
+                                <span className="text-white font-serif italic text-2xl tracking-tight">
                                     {img.alt}
                                 </span>
                             </div>
@@ -73,7 +98,7 @@ export default function GalleryPage() {
             {/* ─── LIGHTBOX ─── */}
             {selectedImage !== null && (
                 <motion.div
-                    className="fixed inset-0 z-[100] bg-secondary/95 backdrop-blur-md flex items-center justify-center p-6 sm:p-12"
+                    className="fixed inset-0 z-[100] bg-background-dark/95 backdrop-blur-2xl flex items-center justify-center p-6 sm:p-12"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                 >
@@ -81,7 +106,7 @@ export default function GalleryPage() {
                         onClick={() => setSelectedImage(null)}
                         aria-label="Close Lightbox"
                         title="Close"
-                        className="absolute top-8 right-8 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors text-white"
+                        className="absolute top-8 right-8 w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 transition-colors text-white/40 hover:text-white"
                     >
                         <X className="w-6 h-6" />
                     </button>
@@ -93,20 +118,20 @@ export default function GalleryPage() {
                         <img
                             src={GALLERY_IMAGES[selectedImage].src}
                             alt={GALLERY_IMAGES[selectedImage].alt}
-                            className="max-w-full max-h-full object-contain rounded-2xl shadow-2xl"
+                            className="max-w-full max-h-full object-contain rounded-3xl shadow-[0_50px_100px_rgba(0,0,0,0.8)] border border-white/5"
                         />
                     </motion.div>
 
-                    <div className="absolute bottom-12 left-1/2 -translate-x-1/2 text-center text-white space-y-2">
-                        <h2 className="text-3xl font-serif italic">Trattoria Trium</h2>
-                        <p className="text-white/60 text-sm font-bold uppercase tracking-[0.3em]">{GALLERY_IMAGES[selectedImage].alt}</p>
+                    <div className="absolute bottom-12 left-1/2 -translate-x-1/2 text-center text-white space-y-3">
+                        <h2 className="text-4xl font-serif italic font-light tracking-tight">Trattoria <span className="text-primary font-bold not-italic">Trium</span></h2>
+                        <p className="text-white/20 text-[9px] font-bold uppercase tracking-[0.4em]">{GALLERY_IMAGES[selectedImage].alt}</p>
                     </div>
                 </motion.div>
             )}
 
             {/* ─── DECORATIVE BLOBS ─── */}
-            <div className="fixed top-0 right-0 w-1/3 h-1/2 bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 -z-10" />
-            <div className="fixed bottom-0 left-0 w-1/2 h-1/2 bg-secondary/5 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/3 -z-10" />
+            <div className="fixed top-0 right-0 w-1/3 h-1/2 bg-primary/[0.03] blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 -z-10" />
+            <div className="fixed bottom-0 left-0 w-1/2 h-1/2 bg-primary/[0.02] blur-[120px] rounded-full translate-y-1/2 -translate-x-1/3 -z-10" />
         </div>
     );
 }
