@@ -14,7 +14,7 @@ function Logo({ className = "", light = true }: { className?: string; light?: bo
                     <div className="flex-1 h-full bg-white/10" />
                     <div className="w-1/6 h-full bg-[#ce2b37]" />
                 </div>
-                <span className={`font-script text-3xl md:text-4xl lg:text-5xl ${light ? 'text-white' : 'text-background-dark'} block leading-none pt-2`}>
+                <span className={`font-script text-3xl md:text-4xl lg:text-5xl ${light ? 'text-[#FDFDD0]' : 'text-background-dark'} block leading-none pt-2`}>
                     Trium
                 </span>
             </div>
@@ -28,20 +28,20 @@ function Logo({ className = "", light = true }: { className?: string; light?: bo
 }
 
 const GALLERY_IMAGES = [
-    { src: "/images/gallery-storefront.png", alt: "Authentic Storefront" },
-    { src: "/images/gallery/fb_vongole.jpg", alt: "Spaghetti alle Vongole" },
-    { src: "/images/gallery-interior.jpg", alt: "Sicilian Interior" },
-    { src: "/images/gallery/fb_pizza.jpg", alt: "Gourmet Pizza Bresaola" },
-    { src: "/images/gallery-buffet.jpg", alt: "Antipasti Buffet" },
-    { src: "/images/gallery-salad.jpg", alt: "Burrata & Beetroot" },
-    { src: "/images/gallery/crostata.png", alt: "Crostata di Marmellata" },
-    { src: "/images/gallery-pasta.jpg", alt: "Handmade Pasta" },
-    { src: "/images/gallery/fb_baba.jpg", alt: "Baba au Rhum Speciale" },
-    { src: "/images/kitchen-flame.jpg", alt: "The Sicilian Fire" },
-    { src: "/images/gallery-press.png", alt: "HLN Featured" },
-    { src: "/images/gallery-suggestie.jpg", alt: "Chef's Suggestion" },
-    { src: "/images/gallery-tart.jpg", alt: "Artisanal Tart" },
-    { src: "/images/kitchen-heritage.jpg", alt: "Kitchen Heritage" },
+    { src: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/43/3a/c2/caption.jpg?w=1200&h=-1&s=1", alt: "Authentic Sicilian Kitchen" },
+    { src: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1e/a2/98/7a/closing-time.jpg?w=1200&h=-1&s=1", alt: "Trattoria Trium Atmosphere" },
+    { src: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1d/49/28/97/caption.jpg?w=1200&h=-1&s=1", alt: "Traditional Italian Dining" },
+    { src: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/06/fb/1c/84/waiter-in-glasses-such.jpg?w=1200&h=-1&s=1", alt: "Warm Sicilian Hospitality" },
+    { src: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/06/fb/1c/71/starter-so-small.jpg?w=1200&h=-1&s=1", alt: "Handcrafted Antipasti" },
+    { src: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/70/49/10/trattoria-trium.jpg?w=1200&h=-1&s=1", alt: "Storefront in Bruges" },
+    { src: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/33/23/80/a0/caption.jpg?w=1200&h=-1&s=1", alt: "Freshly Baked Pizza Tartufo" },
+    { src: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/d2/a7/4b/caption.jpg?w=1200&h=-1&s=1", alt: "Spaghetti alle Vongole" },
+    { src: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/d2/a7/4a/caption.jpg?w=1200&h=-1&s=1", alt: "Signature Calzone" },
+    { src: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/d2/a7/49/caption.jpg?w=1200&h=-1&s=1", alt: "Ossobuco alla Milanese" },
+    { src: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/d2/a7/48/caption.jpg?w=1200&h=-1&s=1", alt: "Pasta alla Norma" },
+    { src: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/d2/a7/47/caption.jpg?w=1200&h=-1&s=1", alt: "Sicilian Cannoli" },
+    { src: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/d2/a7/46/caption.jpg?w=1200&h=-1&s=1", alt: "Artisanal Italian Wines" },
+    { src: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2d/80/0f/f2/caption.jpg?w=1200&h=-1&s=1", alt: "Seasonal Chef's Special" },
 ];
 
 export default function GalleryPage() {
@@ -122,8 +122,8 @@ export default function GalleryPage() {
                         />
                     </motion.div>
 
-                    <div className="absolute bottom-12 left-1/2 -translate-x-1/2 text-center text-white space-y-3">
-                        <h2 className="text-4xl font-serif italic font-light tracking-tight">Trattoria <span className="text-primary font-bold not-italic">Trium</span></h2>
+                    <div className="absolute bottom-12 left-1/2 -translate-x-1/2 text-center space-y-3">
+                        <h2 className="text-4xl font-serif italic font-light tracking-tight text-[#FDFDD0]">Trattoria <span className="text-primary font-bold not-italic">Trium</span></h2>
                         <p className="text-white/20 text-[9px] font-bold uppercase tracking-[0.4em]">{GALLERY_IMAGES[selectedImage].alt}</p>
                     </div>
                 </motion.div>

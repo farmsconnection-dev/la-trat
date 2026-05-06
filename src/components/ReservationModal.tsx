@@ -60,13 +60,13 @@ export default function ReservationModal({ isOpen, onClose }: ReservationModalPr
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.9, y: 40 }}
                         transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                        className="relative w-full max-w-xl bg-background-dark/95 backdrop-blur-2xl rounded-[3.5rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden border border-white/5"
+                        className="relative w-full max-w-xl bg-background-dark/90 backdrop-blur-3xl rounded-[4rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] overflow-hidden border border-white/5 inner-elevate"
                     >
                         {/* Close Button */}
                         <button
                             onClick={onClose}
                             aria-label="Close Reservation Modal"
-                            className="absolute top-6 right-6 md:top-10 md:right-10 w-12 h-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-md flex items-center justify-center hover:bg-primary hover:text-secondary group transition-all duration-300 z-[60] shadow-2xl"
+                            className="absolute top-6 right-6 md:top-10 md:right-10 w-12 h-12 rounded-full border border-white/10 bg-white/5 backdrop-blur-md flex items-center justify-center hover:bg-primary-hover hover:text-black group transition-all duration-300 z-[60] shadow-2xl"
                         >
                             <X className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
                         </button>
@@ -84,13 +84,13 @@ export default function ReservationModal({ isOpen, onClose }: ReservationModalPr
                                         <div className="space-y-3">
                                             <motion.h2
                                                 custom={0} variants={formVariants} initial="hidden" animate="visible"
-                                                className="text-5xl font-serif text-white tracking-tight"
+                                                className="text-5xl md:text-6xl font-serif text-gold-noir tracking-tight leading-[0.9]"
                                             >
-                                                Prenota un <span className="text-primary italic font-light">Tavolo.</span>
+                                                Prenota un <span className="text-noir-silver italic font-light font-editorial lowercase tracking-normal">Tavolo.</span>
                                             </motion.h2>
                                             <motion.p
                                                 custom={1} variants={formVariants} initial="hidden" animate="visible"
-                                                className="text-white/40 text-[11px] font-bold uppercase tracking-[0.3em]"
+                                                className="text-noir-silver/40 text-[10px] md:text-[11px] font-black uppercase tracking-[0.4em]"
                                             >
                                                 AUTHENTIC SICILIAN EXPERIENCE · BRUGES
                                             </motion.p>
@@ -99,15 +99,15 @@ export default function ReservationModal({ isOpen, onClose }: ReservationModalPr
                                         <form onSubmit={handleSubmit} className="space-y-8">
                                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                                                 <motion.div custom={2} variants={formVariants} initial="hidden" animate="visible" className="space-y-3">
-                                                    <label htmlFor="res-date" className="text-[10px] font-black uppercase tracking-widest text-primary/60 flex items-center gap-2">
-                                                        <Calendar className="w-3 h-3" /> Date
+                                                    <label htmlFor="res-date" className="text-[10px] font-black uppercase tracking-widest text-primary/40 flex items-center gap-2">
+                                                        <Calendar className="w-3 h-3 text-primary" /> Date
                                                     </label>
                                                     <input
                                                         id="res-date"
                                                         required
                                                         type="date"
                                                         min={new Date().toISOString().split("T")[0]}
-                                                        className="w-full bg-white/5 border border-white/5 rounded-2xl px-6 py-5 text-sm font-bold text-white focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+                                                        className="w-full bg-white/[0.03] border border-white/5 rounded-2xl px-6 py-5 text-sm font-bold text-noir-silver focus:ring-1 focus:ring-primary/40 transition-all outline-none inner-elevate"
                                                         value={formData.date}
                                                         onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                                                     />
@@ -118,13 +118,13 @@ export default function ReservationModal({ isOpen, onClose }: ReservationModalPr
                                                     )}
                                                 </motion.div>
                                                 <motion.div custom={3} variants={formVariants} initial="hidden" animate="visible" className="space-y-3">
-                                                    <label htmlFor="res-time" className="text-[10px] font-black uppercase tracking-widest text-primary/60 flex items-center gap-2">
-                                                        <Clock className="w-3 h-3" /> Time
+                                                    <label htmlFor="res-time" className="text-[10px] font-black uppercase tracking-widest text-primary/40 flex items-center gap-2">
+                                                        <Clock className="w-3 h-3 text-primary" /> Time
                                                     </label>
                                                     <select
                                                         id="res-time"
                                                         required
-                                                        className="w-full bg-white/5 border border-white/5 rounded-2xl px-6 py-5 text-sm font-bold text-white focus:ring-2 focus:ring-primary/20 transition-all outline-none appearance-none"
+                                                        className="w-full bg-white/[0.03] border border-white/5 rounded-2xl px-6 py-5 text-sm font-bold text-noir-silver focus:ring-1 focus:ring-primary/40 transition-all outline-none appearance-none inner-elevate"
                                                         value={formData.time}
                                                         onChange={(e) => setFormData({ ...formData, time: e.target.value })}
                                                     >
@@ -139,8 +139,8 @@ export default function ReservationModal({ isOpen, onClose }: ReservationModalPr
                                             </div>
 
                                             <motion.div custom={4} variants={formVariants} initial="hidden" animate="visible" className="space-y-3">
-                                                <label className="text-[10px] font-black uppercase tracking-widest text-primary/60 flex items-center gap-2">
-                                                    <Users className="w-3 h-3" /> Guests
+                                                <label className="text-[10px] font-black uppercase tracking-widest text-primary/40 flex items-center gap-2">
+                                                    <Users className="w-3 h-3 text-primary" /> Guests
                                                 </label>
                                                 <div className="grid grid-cols-4 gap-4">
                                                     {["1", "2", "3", "4+"].map((num) => (
@@ -148,7 +148,7 @@ export default function ReservationModal({ isOpen, onClose }: ReservationModalPr
                                                             key={num}
                                                             type="button"
                                                             onClick={() => setFormData({ ...formData, guests: num })}
-                                                            className={`py-4 rounded-xl text-[10px] font-black tracking-widest uppercase transition-all ${formData.guests === num ? "bg-primary text-secondary shadow-lg shadow-primary/20" : "bg-white/5 text-white/30 hover:bg-white/10"}`}
+                                                            className={`py-4 rounded-xl text-[10px] font-black tracking-widest uppercase transition-all ${formData.guests === num ? "bg-primary text-black shadow-lg shadow-primary/20" : "bg-white/[0.03] text-noir-silver/30 hover:bg-white/10 inner-elevate"}`}
                                                         >
                                                             {num}
                                                         </button>
@@ -157,13 +157,13 @@ export default function ReservationModal({ isOpen, onClose }: ReservationModalPr
                                             </motion.div>
 
                                             <motion.div custom={5} variants={formVariants} initial="hidden" animate="visible" className="space-y-3">
-                                                <label htmlFor="res-name" className="text-[10px] font-black uppercase tracking-widest text-primary/60">Full Name</label>
+                                                <label htmlFor="res-name" className="text-[10px] font-black uppercase tracking-widest text-primary/40">Full Name</label>
                                                 <input
                                                     id="res-name"
                                                     required
                                                     type="text"
                                                     placeholder="Gabriele Trium"
-                                                    className="w-full bg-white/5 border border-white/5 rounded-2xl px-6 py-5 text-sm font-bold text-white placeholder-white/10 focus:ring-2 focus:ring-primary/20 transition-all outline-none font-sans"
+                                                    className="w-full bg-white/[0.03] border border-white/5 rounded-2xl px-6 py-5 text-sm font-bold text-noir-silver placeholder-white/10 focus:ring-1 focus:ring-primary/40 transition-all outline-none font-sans inner-elevate"
                                                     value={formData.name}
                                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                                 />
@@ -173,7 +173,7 @@ export default function ReservationModal({ isOpen, onClose }: ReservationModalPr
                                                 custom={6} variants={formVariants} initial="hidden" animate="visible"
                                                 type="submit"
                                                 disabled={formData.date ? [0, 1].includes(new Date(formData.date).getDay()) : false}
-                                                className="w-full bg-primary text-secondary py-6 rounded-2xl font-black text-[10px] uppercase tracking-[0.4em] shadow-xl shadow-primary/10 hover:bg-white hover:-translate-y-0.5 transition-all mt-8 disabled:opacity-20 disabled:pointer-events-none"
+                                                className="w-full btn-amber-glow py-6 rounded-2xl font-black text-[10px] uppercase tracking-[0.4em] mt-8 disabled:opacity-20 disabled:pointer-events-none"
                                             >
                                                 Confirm Reservation
                                             </motion.button>
@@ -190,8 +190,8 @@ export default function ReservationModal({ isOpen, onClose }: ReservationModalPr
                                             <CheckCircle2 className="w-12 h-12 text-primary" />
                                         </div>
                                         <div className="space-y-5">
-                                            <h2 className="text-6xl font-serif text-white italic tracking-tight font-light">Grazie <span className="text-primary not-italic font-bold">Mille!</span></h2>
-                                            <p className="text-white/40 text-[11px] font-bold uppercase tracking-[0.3em] max-w-xs mx-auto leading-loose">
+                                            <h2 className="text-6xl md:text-7xl font-serif text-gold-noir tracking-tight leading-tight">Grazie <span className="text-noir-silver italic font-light font-editorial lowercase tracking-normal">Mille!</span></h2>
+                                            <p className="text-noir-silver/40 text-[10px] md:text-[11px] font-black uppercase tracking-[0.4em] max-w-xs mx-auto leading-loose">
                                                 Your table for {formData.guests} has been requested for {formData.date} at {formData.time}.
                                             </p>
                                         </div>
