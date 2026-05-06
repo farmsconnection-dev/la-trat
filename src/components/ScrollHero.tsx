@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -16,12 +16,25 @@ export default function ScrollHero({
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
-    // Set dreamy playback speed as requested
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 0.8;
-    }
+    const video = videoRef.current;
+    if (!video) return;
+
+    // 0.7x Dreamy speed & start at 1s to avoid "dough glitch"
+    video.playbackRate = 0.7;
+    video.currentTime = 1;
+
+    const handleTimeUpdate = () => {
+      // Loop back to 1s instead of 0 to maintain the "crop"
+      if (video.currentTime >= video.duration - 0.1) {
+        video.currentTime = 1;
+        video.play();
+      }
+    };
+
+    video.addEventListener("timeupdate", handleTimeUpdate);
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -32,29 +45,28 @@ export default function ScrollHero({
       },
     });
 
-    // Content fade out on scroll
     tl.to(".hero-content", {
       y: -100,
       opacity: 0,
       ease: "power2.inOut",
     });
 
-    // Video scale & darken effect on scroll
     tl.to(".hero-video", {
-      scale: 1.1,
-      filter: "brightness(0.4)",
+      scale: 1.2, // Zoomed in on the "middle part" as requested
+      filter: "brightness(0.3) blur(2px)",
       ease: "none",
     }, 0);
 
     return () => {
+      video.removeEventListener("timeupdate", handleTimeUpdate);
       tl.kill();
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
-  }, []);
+  }, [videoLoaded]);
 
   return (
-    <div ref={containerRef} id="home" className="relative w-full h-[120vh] overflow-hidden bg-[#0a0805]">
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
+    <div ref={containerRef} id="home" className="relative w-full h-[120vh] overflow-hidden bg-black">
+      <div className="sticky top-0 h-screen w-full overflow-hidden bg-black">
         {/* Background Video Layer */}
         <video
           ref={videoRef}
@@ -62,20 +74,21 @@ export default function ScrollHero({
           loop
           muted
           playsInline
-          className="hero-video absolute inset-0 w-full h-full object-cover z-0 grayscale-[0.2]"
+          onLoadedData={() => setVideoLoaded(true)}
+          className="hero-video absolute inset-0 w-full h-full object-cover z-0 scale-110"
         >
-          <source src="/video/background.mp4" type="video/mp4" />
+          <source src="/video/Pizza_ingredients_falling.mp4" type="video/mp4" />
         </video>
 
         {/* Cinematic Overlays */}
-        {/* 1. Base Dark Overlay (0.3 as requested) */}
-        <div className="absolute inset-0 bg-black/30 z-10 pointer-events-none" />
+        {/* 1. Base Dark Overlay */}
+        <div className="absolute inset-0 bg-black/40 z-10 pointer-events-none" />
         
-        {/* 2. Custom Vignette for Depth */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.5)_100%)] z-15 pointer-events-none" />
+        {/* 2. Soft Fade-to-Black at the edges & bottom */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)] z-15 pointer-events-none" />
         
-        {/* 3. Bottom Transition to Page Content */}
-        <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-[#0a0805] to-transparent z-20 pointer-events-none" />
+        {/* 3. Smooth Bottom Transition */}
+        <div className="absolute bottom-0 left-0 right-0 h-96 bg-gradient-to-t from-black via-black/40 to-transparent z-20 pointer-events-none" />
 
         {/* Content Layer */}
         <div className="relative z-30 h-full flex flex-col items-center justify-center px-6 text-center">
@@ -83,10 +96,10 @@ export default function ScrollHero({
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
+              transition={{ duration: 1.2, delay: 0.5 }}
             >
               <span className="inline-block px-8 py-3.5 rounded-full border border-white/10 text-[#c58a58] text-[10px] md:text-[12px] font-black uppercase tracking-[0.6em] backdrop-blur-xl bg-white/5 shadow-2xl">
-                Authentic Sicilian Kitchen · Bruges Since 1993
+                The Art of Sicilian Fire
               </span>
             </motion.div>
 
@@ -95,12 +108,12 @@ export default function ScrollHero({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.4, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              <h1 className="text-[4rem] md:text-[9rem] xl:text-[11rem] font-serif text-white leading-[0.8] tracking-tighter drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+              <h1 className="text-[4rem] md:text-[9rem] xl:text-[11rem] font-serif text-white leading-[0.8] tracking-tighter drop-shadow-[0_20px_50px_rgba(0,0,0,1)]">
                 Fired in
                 <br />
                 <span
                   className="italic font-light text-[#c58a58]"
-                  style={{ textShadow: "0 0 100px rgba(197,138,88,0.3)" }}
+                  style={{ textShadow: "0 0 100px rgba(197,138,88,0.4)" }}
                 >
                   Tradition.
                 </span>
@@ -111,11 +124,9 @@ export default function ScrollHero({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1.2, delay: 1.3 }}
-              className="text-white/50 text-[11px] md:text-[14px] max-w-lg mx-auto leading-relaxed uppercase tracking-[0.4em] font-sans italic"
+              className="text-white/60 text-[11px] md:text-[14px] max-w-lg mx-auto leading-relaxed uppercase tracking-[0.5em] font-sans italic"
             >
-              Experience the soul of Sicily in every bite.
-              <br />
-              Wood-fired, family-guarded, time-honored.
+              Where ingredients fall into perfection.
             </motion.p>
 
             <motion.div 
@@ -126,17 +137,17 @@ export default function ScrollHero({
             >
               <button
                 onClick={onReserve}
-                className="group relative bg-[#c58a58] text-black px-16 py-7 rounded-full text-[10px] font-black uppercase tracking-[0.5em] overflow-hidden transition-all shadow-[0_20px_40px_rgba(197,138,88,0.2)] hover:shadow-[0_25px_50px_rgba(197,138,88,0.3)]"
+                className="group relative bg-[#c58a58] text-black px-16 py-7 rounded-full text-[10px] font-black uppercase tracking-[0.5em] overflow-hidden transition-all shadow-2xl shadow-[#c58a58]/20"
               >
-                <span className="relative z-10 transition-colors duration-500 group-hover:text-white">Reserve a Table</span>
+                <span className="relative z-10 transition-colors duration-500 group-hover:text-white">Reserve Table</span>
                 <div className="absolute inset-0 bg-[#0a0805] translate-y-full transition-transform duration-500 ease-[0.76, 0, 0.24, 1] group-hover:translate-y-0" />
               </button>
               
               <a
                 href="#signature-pizzas"
-                className="group flex items-center gap-4 text-white/40 hover:text-[#c58a58] text-[9px] font-black uppercase tracking-[0.5em] transition-all duration-500"
+                className="group flex items-center gap-4 text-white/40 hover:text-[#c58a58] text-[9px] font-black uppercase tracking-[0.6em] transition-all duration-500"
               >
-                <span className="border-b border-white/10 group-hover:border-[#c58a58]/60 pb-1.5 transition-colors">Our Signature Pizzas</span>
+                <span className="border-b border-white/10 group-hover:border-[#c58a58]/60 pb-1.5 transition-colors">Discover</span>
                 <span className="text-lg animate-bounce-slow">↓</span>
               </a>
             </motion.div>
@@ -150,7 +161,6 @@ export default function ScrollHero({
           transition={{ delay: 2.5, duration: 1.5 }}
           className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-5 z-40"
         >
-          <span className="text-white text-[9px] uppercase tracking-[0.6em] font-black opacity-60">Discover</span>
           <div className="relative w-px h-24 overflow-hidden">
             <div className="absolute inset-0 bg-white/20" />
             <motion.div 
