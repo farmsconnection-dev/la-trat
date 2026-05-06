@@ -54,7 +54,7 @@ export default function AuthenticMenu() {
             <h3 className="text-2xl md:text-3xl font-serif text-primary border-b border-primary/10 pb-8 mb-16 tracking-[0.4rem] uppercase font-bold">Le Pizze</h3>
             <div className="space-y-20">
               {MENU_DATA.pizzas.map((item) => (
-                <div key={item.name} className="menu-item group cursor-default">
+                <div key={item.name} className="menu-item group cursor-default hover-glow">
                   <div className="flex justify-between items-baseline gap-4 mb-3 relative">
                     <div className="relative flex-shrink-0">
                       <span className="font-editorial text-2xl md:text-3xl text-ivory group-hover:text-primary transition-all duration-500 italic block">
@@ -86,7 +86,7 @@ export default function AuthenticMenu() {
             <h3 className="text-2xl md:text-3xl font-serif text-primary border-b border-primary/10 pb-8 mb-16 tracking-[0.4rem] uppercase font-bold">Antipasti & Vino</h3>
             <div className="space-y-20">
               {MENU_DATA.antipasti.map((item) => (
-                <div key={item.name} className="menu-item group cursor-default">
+                <div key={item.name} className="menu-item group cursor-default hover-glow">
                   <div className="flex justify-between items-baseline gap-4 mb-3 relative">
                     <div className="relative flex-shrink-0">
                       <span className="font-editorial text-2xl md:text-3xl text-ivory group-hover:text-primary transition-all duration-500 italic block">

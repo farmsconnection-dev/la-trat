@@ -98,10 +98,19 @@ html {
   h3 {
     font-family: var(--font-serif);
     color: var(--color-noir-silver);
-    letter-spacing: 0.4rem;
     text-transform: uppercase;
     text-shadow: 0 10px 50px rgba(0, 0, 0, 1);
-    @apply leading-tight font-medium;
+    @apply font-bold;
+    letter-spacing: clamp(0.3rem, 1vw, 0.6rem);
+    line-height: clamp(1.1, 1.2vw, 1.4);
+  }
+
+  h2 {
+    font-size: clamp(3rem, 8vw, 10rem);
+  }
+
+  h3 {
+    font-size: clamp(1.5rem, 4vw, 3rem);
   }
 
   .font-editorial {
@@ -109,15 +118,25 @@ html {
   }
 }
 
-@layer utilities {
-  .text-gold-noir {
-    background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  .hover-glow {
+    position: relative;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .glass-nav {
-    -webkit-backdrop-filter: blur(20px);
+  .hover-glow::before {
+    content: "";
+    position: absolute;
+    inset: -20px;
+    background: radial-gradient(circle, rgba(197, 160, 89, 0.15) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .hover-glow:hover::before {
+    opacity: 1;
+  }
     backdrop-filter: blur(20px);
     background-color: rgba(10, 13, 16, 0.7);
     border: 0.5px solid transparent;

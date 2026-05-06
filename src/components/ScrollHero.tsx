@@ -58,9 +58,25 @@ export default function ScrollHero({
       ease: "none",
     }, 0);
 
+    // Global Parallax for Background Video
+    const globalTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "body",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+      },
+    });
+
+    globalTl.to(".hero-video", {
+      y: "20vh", // Subtle vertical shift across the entire page
+      ease: "none",
+    });
+
     return () => {
       video.removeEventListener("timeupdate", handleTimeUpdate);
       tl.kill();
+      globalTl.kill();
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, [videoLoaded]);

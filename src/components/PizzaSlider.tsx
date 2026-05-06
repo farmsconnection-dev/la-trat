@@ -121,7 +121,7 @@ export default function PizzaSlider() {
                   <div className="relative w-full aspect-square pointer-events-auto overflow-visible">
                     {/* Floating Pizza with Mask & Drop Shadow */}
                     <motion.div 
-                      className="w-full h-full relative"
+                      className="w-full h-full relative hover-glow"
                       animate={{
                         y: isCenter ? [0, -20, 0] : 0,
                         rotateZ: isCenter ? [5, 7, 5] : 0
