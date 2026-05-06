@@ -17,6 +17,22 @@ const MENU_DATA = {
     { name: "Chianti Classico", price: "7 / 38", desc: "Een volle rode wijn, perfect bij onze houtoven pizza’s." },
     { name: "Nero d'Avola", price: "8 / 42", desc: "Bold Sicilian red with notes of dark cherry." },
     { name: "Pinot Grigio", price: "6 / 32", desc: "Crisp and refreshing white from Friuli." }
+  ],
+  dolci: [
+    { 
+      name: "Dolce del Giorno", 
+      price: "9", 
+      desc: "Zachte biscuitrol gevuld met verse room en aardbeien, afgewerkt met meringue en eetbare bloemetjes.",
+      image: "https://scontent.fbru2-1.fna.fbcdn.net/v/t39.30808-6/491834512_1250940723704451_6644554787141929762_n.jpg?stp=dst-jpg_s960x960_tt6"
+    },
+    { 
+      name: "Mousse al Cioccolato", 
+      price: "8.5", 
+      desc: "Huisgemaakte chocolademousse met verse aardbeien en een krokante Italiaanse cialda.",
+      image: "https://scontent.fbru2-1.fna.fbcdn.net/v/t39.30808-6/685975801_1592084392923414_1908620052264736310_n.jpg?stp=c538.0.924.924a_dst-jpg_s160x160_tt6"
+    },
+    { name: "Cannolo Siciliano", price: "8", desc: "Authentieke Siciliaanse cannolo gevuld met verse ricotta en pistache." },
+    { name: "Aperitivo Speciale", price: "15", desc: "Selectie van Italiaanse hapjes inclusief cocktail naar keuze." }
   ]
 };
 
@@ -106,6 +122,54 @@ export default function AuthenticMenu() {
               ))}
             </div>
           </motion.div>
+        </div>
+        
+        {/* I Nostri Dolci - Featured Section */}
+        <div className="mt-48 md:mt-64 pt-48 border-t border-primary/10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-32"
+          >
+            <h3 className="text-3xl md:text-5xl font-serif text-primary tracking-[0.4rem] uppercase font-bold">I Nostri Dolci</h3>
+            <p className="font-editorial text-ivory/60 italic mt-4">Con Amore dalla Cucina</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            {MENU_DATA.dolci.map((item, idx) => (
+              <motion.div
+                key={item.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="menu-item group hover-glow p-8 rounded-lg transition-all duration-500"
+              >
+                {item.image && (
+                  <div className="aspect-square mb-8 overflow-hidden rounded-sm relative">
+                    <img 
+                      src={item.image} 
+                      alt={item.name}
+                      className="w-full h-full object-cover social-img-grade group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
+                  </div>
+                )}
+                <div className="flex justify-between items-baseline mb-4">
+                  <span className="font-editorial text-xl text-ivory italic group-hover:text-primary transition-colors">
+                    {item.name}
+                  </span>
+                  <span className="font-serif text-lg text-primary font-bold">
+                    {item.price}
+                  </span>
+                </div>
+                <p className="text-[10px] text-ivory/40 uppercase tracking-widest leading-relaxed">
+                  {item.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         {/* Action Footer */}

@@ -346,4 +346,31 @@ html {
     padding: 6rem 2rem;
     z-index: 1;
   }
+
+  /* Social Media Image Grading */
+  .social-img-grade {
+    filter: sepia(0.3) brightness(0.9) contrast(1.1);
+    transition: filter 0.5s ease;
+    border: 1px solid rgba(197, 160, 89, 0.2);
+  }
+
+  .social-img-grade:hover {
+    filter: sepia(0.1) brightness(1) contrast(1.05);
+  }
+
+  /* Review Section Styling */
+  .review-quote {
+    font-family: var(--font-editorial);
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  .quote-icon {
+    font-family: var(--font-serif);
+    color: var(--color-primary);
+    font-size: 8rem;
+    line-height: 0;
+    opacity: 0.3;
+    user-select: none;
+  }
 }

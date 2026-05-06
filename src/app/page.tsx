@@ -110,24 +110,24 @@ const DESSERTS = [
 
 const TESTIMONIALS = [
   {
-    name: "Marc Fodderie",
+    name: "C.S.",
     date: "May 2026",
     rating: 5,
-    text: "Doorleefde gastvrijheid en liefde voor het vak. De zorg die aan spijs en drank wordt gegeven is uitzonderlijk. Aanrader!",
+    text: "Authentic Italian restaurant. Class service and kindness worthy of the best: Sicilian specialities like stuffed sardines and fennel salad. We'll be back!",
     source: "TripAdvisor"
   },
   {
-    name: "Anne W",
+    name: "Italian Traveler",
     date: "April 2026",
     rating: 5,
-    text: "The best Italian meal I've had in a long time! Authentic atmosphere and the Cacio e Pepe was the best I've ever tasted.",
+    text: "The best Italian meal I have had for a long time! The decor is simple, but the restaurant has a very good atmosphere - a lot of the other diners were Italian, always a good sign!",
     source: "TripAdvisor"
   },
   {
-    name: "Gary W",
+    name: "Local Patron",
     date: "November 2024",
     rating: 5,
-    text: "Fantastic pizza and the most friendly staff. The Calzone Special was really special! Highly recommend.",
+    text: "Super pizza with a perfect crust. Italian staff, very friendly and authentic. Adequate prices and a very clean, welcoming local spot.",
     source: "TripAdvisor"
   }
 ];function Logo({ className = "", light = true }: { className?: string; light?: boolean }) {
@@ -533,29 +533,22 @@ export default function Home() {
             <Reveal y={30}>
               <SectionTitle 
                 icon="reviews" 
-                title="Guest Experiences" 
+                title="La Voce dei Nostri Ospiti" 
                 subtitle="VOICES FROM OUR SICILIAN TABLE" 
               />
             </Reveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
               {TESTIMONIALS.map((t, i) => (
                 <Reveal key={t.name} delay={i * 0.15} y={40}>
-                  <div className="group relative p-10 md:p-12 rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-sm hover:bg-white/[0.04] transition-all duration-700 inner-elevate flex flex-col h-full">
-                    <div className="flex gap-1 mb-8">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} size={14} className={i < t.rating ? "text-primary fill-primary" : "text-white/10"} />
-                      ))}
-                    </div>
-                    <blockquote className="text-noir-silver/70 text-lg md:text-xl font-serif italic leading-relaxed mb-10 flex-1">
-                      "{t.text}"
+                  <div className="group relative flex flex-col items-center text-center opacity-90">
+                    <span className="quote-icon mb-4">“</span>
+                    <blockquote className="review-quote text-ivory/80 text-xl md:text-2xl lg:text-3xl font-light mb-12 max-w-sm">
+                      {t.text}
                     </blockquote>
-                    <div className="pt-8 border-t border-white/5 flex items-center justify-between">
-                      <div>
-                        <p className="text-noir-silver font-bold text-[10px] uppercase tracking-[0.3em] mb-1">{t.name}</p>
-                        <p className="text-noir-silver/30 text-[8px] font-black uppercase tracking-[0.2em]">{t.date}</p>
-                      </div>
-                      <span className="text-[8px] font-black uppercase tracking-[0.4em] text-primary/40">{t.source}</span>
+                    <div className="pt-8 border-t border-primary/10 w-24">
+                      <p className="text-primary font-bold text-[9px] uppercase tracking-[0.4em] mb-1">{t.name}</p>
+                      <p className="text-ivory/20 text-[7px] font-black uppercase tracking-[0.2em]">{t.source}</p>
                     </div>
                   </div>
                 </Reveal>
