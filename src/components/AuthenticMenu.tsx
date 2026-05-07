@@ -31,8 +31,18 @@ const MENU_DATA = {
       desc: "Huisgemaakte chocolademousse met verse aardbeien en een krokante Italiaanse cialda.",
       image: "https://scontent.fbru2-1.fna.fbcdn.net/v/t39.30808-6/685975801_1592084392923414_1908620052264736310_n.jpg?stp=c538.0.924.924a_dst-jpg_s160x160_tt6"
     },
-    { name: "Cannolo Siciliano", price: "8", desc: "Authentieke Siciliaanse cannolo gevuld met verse ricotta en pistache." },
-    { name: "Aperitivo Speciale", price: "15", desc: "Selectie van Italiaanse hapjes inclusief cocktail naar keuze." }
+    { 
+      name: "Cannolo Siciliano", 
+      price: "8", 
+      desc: "Authentieke Siciliaanse cannolo gevuld met verse ricotta en pistache.",
+      image: "https://scontent.fbru5-1.fna.fbcdn.net/v/t39.30808-6/684391877_1591087063023147_6135756113504949551_n.jpg"
+    },
+    { 
+      name: "Aperitivo Speciale", 
+      price: "15", 
+      desc: "Selectie van Italiaanse hapjes inclusief cocktail naar keuze.",
+      image: "https://scontent.fbru5-1.fna.fbcdn.net/v/t39.30808-6/678760528_1583551287110058_2668162561863960467_n.jpg"
+    }
   ]
 };
 

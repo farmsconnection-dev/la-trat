@@ -12,6 +12,7 @@ import PizzaSlider from "@/components/PizzaSlider";
 import AuthenticMenu from "@/components/AuthenticMenu";
 import DoughSection from "@/components/DoughSection";
 import CinematicSignature from "@/components/CinematicSignature";
+import SocialShowcase from "@/components/SocialShowcase";
 import SmoothScroll from "@/components/SmoothScroll";
 import {
   Instagram, Facebook, Utensils,
@@ -600,6 +601,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <SocialShowcase />
 
         {/* ─── REFINED DARK FOOTER ─── */}
         <footer id="location" className="bg-[#0a0a0a] text-white pt-[100px] relative overflow-visible z-20">
