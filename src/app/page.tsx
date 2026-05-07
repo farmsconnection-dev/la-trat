@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useMemo } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform, useInView } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -11,6 +11,7 @@ import ScrollHero from "@/components/ScrollHero";
 import PizzaSlider from "@/components/PizzaSlider";
 import AuthenticMenu from "@/components/AuthenticMenu";
 import DoughSection from "@/components/DoughSection";
+import CinematicSignature from "@/components/CinematicSignature";
 import SmoothScroll from "@/components/SmoothScroll";
 import {
   Instagram, Facebook, Utensils,
@@ -134,7 +135,7 @@ const TESTIMONIALS = [
   return (
     <div className={`flex flex-col ${className} group`}>
       <div className="relative">
-        <div className="absolute -top-1 md:-top-2 left-0 w-full h-[1px] md:h-[2px] flex opacity-70 group-hover:opacity-100 transition-all duration-700">
+        <div className="absolute -top-1 md:-top-2 left-0 w-full h-[2px] flex opacity-70 group-hover:opacity-100 transition-all duration-700">
           <div className="w-1/6 h-full bg-[#009246]" />
           <div className="flex-1 h-full bg-white" />
           <div className="w-1/6 h-full bg-[#ce2b37]" />
@@ -261,6 +262,48 @@ function SectionTitle({ icon, title, subtitle, onClick, isOpen }: { icon: string
         <div className="w-12 md:w-16 h-px bg-primary/40 mx-auto mb-6 md:mb-8" />
         <p className="text-primary text-[10px] md:text-[12px] max-w-lg mx-auto leading-relaxed font-black uppercase tracking-[0.5em] md:tracking-[0.6em]">{subtitle}</p>
       </Reveal>
+    </div>
+  );
+}
+
+function FooterAnimatedLogo() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, margin: "-50px" });
+
+  return (
+    <div ref={ref} className="flex flex-col items-center justify-center py-20 relative">
+      <motion.div 
+        initial={{ y: 0, opacity: 0 }}
+        animate={isInView ? { y: -20, opacity: 1 } : { y: 0, opacity: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="w-48 h-[2px] flex mb-4"
+      >
+        <div className="w-1/6 h-full bg-[#009246]" />
+        <div className="flex-1 h-full bg-white" />
+        <div className="w-1/6 h-full bg-[#ce2b37]" />
+      </motion.div>
+      
+      <motion.div
+        animate={isInView ? { textShadow: "0px 0px 30px rgba(255, 191, 0, 0.4)" } : { textShadow: "0px 0px 0px rgba(255, 191, 0, 0)" }}
+        transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
+      >
+        <span className="font-script text-7xl md:text-8xl lg:text-9xl block leading-none">
+          <span className="text-[#009246]">T</span>
+          <span className="text-white">ri</span>
+          <span className="text-[#ce2b37]">um</span>
+        </span>
+      </motion.div>
+      
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 0.5 } : { opacity: 0 }}
+        transition={{ duration: 1, delay: 0.6 }}
+        className="flex items-center gap-2 mt-8"
+      >
+        <span className="text-[9px] font-black uppercase tracking-[0.5em] text-white">Bruges Trattoria</span>
+        <div className="w-1 h-1 rounded-full bg-primary/40" />
+        <span className="text-[9px] font-black uppercase tracking-[0.5em] text-white">Since 1993</span>
+      </motion.div>
     </div>
   );
 }
@@ -558,80 +601,77 @@ export default function Home() {
         </section>
 
         {/* ─── REFINED DARK FOOTER ─── */}
-        <footer id="location" className="bg-background-dark text-white pt-20 md:pt-32 pb-12 md:pb-16 relative overflow-hidden border-t border-white/5">
+        <footer id="location" className="bg-[#0a0a0a] text-white pt-[100px] pb-12 md:pb-16 relative overflow-visible border-t border-white/5 z-20">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/[0.03] blur-[140px] rounded-full translate-x-1/2 -translate-y-1/2" />
 
           <div className="relative max-w-7xl mx-auto px-6">
-            <Reveal stagger y={40}>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 py-12 md:py-20">
-                <div className="space-y-6 md:space-y-8">
-                  <Logo />
-                  <p className="text-white/50 text-[10px] font-bold uppercase tracking-[0.4em] leading-loose font-sans">
-                    AUTHENTIC SICILIAN<br />EXPERIENCE SINCE 1993
-                  </p>
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 py-12 md:py-20 text-center md:text-left">
+              
+              <div className="space-y-8">
+                <h5 className="font-serif italic text-2xl text-primary tracking-tight">Opening Hours</h5>
+                <ul className="space-y-6 text-[12px] font-bold uppercase tracking-[0.2em] text-white/50 max-w-[300px] mx-auto md:mx-0">
+                  <li className="flex justify-between border-b border-white/5 pb-4">
+                    <span className="font-sans">Wed – Sun</span>
+                    <div className="flex flex-col items-end">
+                      <span className="text-[#FDFDD0] font-serif italic text-xl">09:30 – 15:00</span>
+                      <span className="text-[#FDFDD0] font-serif italic text-xl">18:00 – 21:30</span>
+                    </div>
+                  </li>
+                  <li className="flex justify-between text-white/20 italic">
+                    <span className="font-sans">Mon – Tue</span>
+                    <span className="font-serif capitalize">Closed</span>
+                  </li>
+                </ul>
+              </div>
 
-                <div className="space-y-8">
-                  <h5 className="font-serif italic text-2xl text-primary tracking-tight">Opening Hours</h5>
-                  <ul className="space-y-6 text-[12px] font-bold uppercase tracking-[0.2em] text-white/50">
-                    <li className="flex justify-between border-b border-white/5 pb-4">
-                      <span className="font-sans">Wed – Sun</span>
-                      <div className="flex flex-col items-end">
-                        <span className="text-[#FDFDD0] font-serif italic text-xl">09:30 – 15:00</span>
-                        <span className="text-[#FDFDD0] font-serif italic text-xl">18:00 – 21:30</span>
-                      </div>
-                    </li>
-                    <li className="flex justify-between text-white/20 italic">
-                      <span className="font-sans">Mon – Tue</span>
-                      <span className="font-serif capitalize">Closed</span>
-                    </li>
-                  </ul>
-                </div>
+              <div className="space-y-8">
+                <h5 className="font-serif italic text-2xl text-primary tracking-tight">Contact Us</h5>
+                <ul className="space-y-8 text-[12px] font-bold uppercase tracking-[0.2em] text-white/50">
+                  <li>
+                    <p className="text-white text-2xl font-serif italic mb-1 tracking-tight">050 33 30 60</p>
+                    <p className="text-[9px] opacity-40 uppercase tracking-[0.4em] font-sans">Bruges Direct Line</p>
+                  </li>
+                  <li>
+                    <p className="text-white text-2xl font-serif italic mb-1 tracking-tight lowercase underline decoration-primary/30 underline-offset-8">trium@skynet.be</p>
+                    <p className="text-[9px] opacity-40 uppercase tracking-[0.4em] font-sans">General Inquiries</p>
+                  </li>
+                </ul>
+              </div>
 
-                <div className="space-y-8">
-                  <h5 className="font-serif italic text-2xl text-primary tracking-tight">Contact Us</h5>
-                  <ul className="space-y-8 text-[12px] font-bold uppercase tracking-[0.2em] text-white/50">
-                    <li>
-                      <p className="text-white text-2xl font-serif italic mb-1 tracking-tight">050 33 30 60</p>
-                      <p className="text-[9px] opacity-40 uppercase tracking-[0.4em] font-sans">Bruges Direct Line</p>
-                    </li>
-                    <li>
-                      <p className="text-white text-2xl font-serif italic mb-1 tracking-tight lowercase underline decoration-primary/30 underline-offset-8">trium@skynet.be</p>
-                      <p className="text-[9px] opacity-40 uppercase tracking-[0.4em] font-sans">General Inquiries</p>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="space-y-8 lg:text-right">
-                  <h5 className="font-serif italic text-2xl text-primary tracking-tight">Our Home</h5>
-                  <p className="text-white/50 text-[12px] font-bold uppercase tracking-[0.25em] leading-loose mb-10 font-sans">
-                    Academiestraat 23<br />
-                    8000 Brugge, Belgium
-                  </p>
-                  <div className="flex lg:justify-end gap-10">
-                    {[
-                      { name: "Instagram", Icon: Instagram },
-                      { name: "Facebook", Icon: Facebook, href: "https://www.facebook.com/trattoriatrium" }
-                    ].map(item => (
-                      <a
-                        key={item.name}
-                        href={item.href || "#"}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.4em] text-white/40 hover:text-primary transition-all duration-500 group font-sans"
-                      >
-                        <item.Icon size={16} strokeWidth={1.5} className="transition-transform group-hover:scale-110" />
-                        <span>{item.name}</span>
-                      </a>
-                    ))}
-                  </div>
+              <div className="space-y-8 md:text-right">
+                <h5 className="font-serif italic text-2xl text-primary tracking-tight">Our Home</h5>
+                <p className="text-white/50 text-[12px] font-bold uppercase tracking-[0.25em] leading-loose mb-10 font-sans">
+                  Academiestraat 23<br />
+                  8000 Brugge, Belgium
+                </p>
+                <div className="flex justify-center md:justify-end gap-10">
+                  {[
+                    { name: "Instagram", Icon: Instagram },
+                    { name: "Facebook", Icon: Facebook, href: "https://www.facebook.com/trattoriatrium" }
+                  ].map(item => (
+                    <a
+                      key={item.name}
+                      href={item.href || "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.4em] text-white/40 hover:text-primary transition-all duration-500 group font-sans"
+                    >
+                      <item.Icon size={16} strokeWidth={1.5} className="transition-transform group-hover:scale-110" />
+                      <span>{item.name}</span>
+                    </a>
+                  ))}
                 </div>
               </div>
-            </Reveal>
+            </div>
 
-            <div className="pt-16 md:pt-24 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-10">
+            <FooterAnimatedLogo />
+
+            <div className="mt-16 mb-8 w-full">
+              <CinematicSignature />
+            </div>
+
+            <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-10">
               <div className="flex flex-col items-center md:items-start gap-4">
-                <p className="font-script text-3xl text-primary/70">A presto!</p>
                 <div className="flex flex-col gap-1">
                   <p className="text-[8px] font-bold uppercase tracking-[0.6em] text-white/30 text-center md:text-left font-sans">
                     © 2026 TRATTORIA TRIUM · REFINING TRADITION
