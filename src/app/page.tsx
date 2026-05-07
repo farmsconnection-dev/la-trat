@@ -474,7 +474,7 @@ export default function Home() {
             <div className="flex-1 grid grid-cols-2 gap-4 md:gap-5 scale-100 md:scale-105 md:translate-x-10">
               <Reveal delay={0.3} y={40}>
                 <div className="rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[3/4] border-[6px] md:border-[10px] border-white/5 bg-white/5 group relative">
-                  <img src="https://images.unsplash.com/photo-1579684947550-22e945225d9a?w=800&fit=crop" alt="Heritage" className="w-full h-full object-cover brightness-75 group-hover:brightness-100 transition-all duration-[1.5s]" />
+                  <img src="/images/social/2.jpg" alt="The Trium Team in their Kitchen" className="w-full h-full object-cover brightness-75 group-hover:brightness-100 transition-all duration-[1.5s]" />
                   <div className="absolute inset-0 bg-gradient-to-t from-background-dark/60 via-transparent to-transparent opacity-80" />
                 </div>
               </Reveal>

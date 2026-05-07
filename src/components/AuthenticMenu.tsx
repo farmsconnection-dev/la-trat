@@ -23,25 +23,25 @@ const MENU_DATA = {
       name: "Dolce del Giorno", 
       price: "9", 
       desc: "Zachte biscuitrol gevuld met verse room en aardbeien, afgewerkt met meringue en eetbare bloemetjes.",
-      image: "https://scontent.fbru2-1.fna.fbcdn.net/v/t39.30808-6/491834512_1250940723704451_6644554787141929762_n.jpg?stp=dst-jpg_s960x960_tt6"
+      image: "/images/social/5.jpg"
     },
     { 
       name: "Mousse al Cioccolato", 
       price: "8.5", 
       desc: "Huisgemaakte chocolademousse met verse aardbeien en een krokante Italiaanse cialda.",
-      image: "https://scontent.fbru2-1.fna.fbcdn.net/v/t39.30808-6/685975801_1592084392923414_1908620052264736310_n.jpg?stp=c538.0.924.924a_dst-jpg_s160x160_tt6"
+      image: "/images/social/4.jpg"
     },
     { 
       name: "Cannolo Siciliano", 
       price: "8", 
       desc: "Authentieke Siciliaanse cannolo gevuld met verse ricotta en pistache.",
-      image: "https://scontent.fbru5-1.fna.fbcdn.net/v/t39.30808-6/684391877_1591087063023147_6135756113504949551_n.jpg"
+      image: "/images/social/3.jpg"
     },
     { 
       name: "Aperitivo Speciale", 
       price: "15", 
       desc: "Selectie van Italiaanse hapjes inclusief cocktail naar keuze.",
-      image: "https://scontent.fbru5-1.fna.fbcdn.net/v/t39.30808-6/678760528_1583551287110058_2668162561863960467_n.jpg"
+      image: "/images/social/6.jpg"
     }
   ]
 };
