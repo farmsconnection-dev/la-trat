@@ -273,10 +273,10 @@ function FooterAnimatedLogo() {
   return (
     <div ref={ref} className="flex flex-col items-center justify-center py-20 relative">
       <motion.div 
-        initial={{ y: 0, opacity: 0 }}
-        animate={isInView ? { y: -20, opacity: 1 } : { y: 0, opacity: 0 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        className="w-48 h-[2px] flex mb-4"
+        initial={{ y: -15, opacity: 0 }}
+        animate={isInView ? { y: 15, opacity: 1 } : { y: -15, opacity: 0 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="w-[150px] h-[2px] flex mb-4 z-10"
       >
         <div className="w-1/6 h-full bg-[#009246]" />
         <div className="flex-1 h-full bg-white" />
@@ -284,8 +284,9 @@ function FooterAnimatedLogo() {
       </motion.div>
       
       <motion.div
-        animate={isInView ? { textShadow: "0px 0px 30px rgba(255, 191, 0, 0.4)" } : { textShadow: "0px 0px 0px rgba(255, 191, 0, 0)" }}
+        animate={isInView ? { textShadow: "0px 0px 30px rgba(197, 160, 89, 0.4)" } : { textShadow: "0px 0px 0px rgba(197, 160, 89, 0)" }}
         transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
+        className="relative z-0"
       >
         <span className="font-script text-7xl md:text-8xl lg:text-9xl block leading-none">
           <span className="text-[#009246]">T</span>
@@ -608,8 +609,8 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 py-12 md:py-20 text-center md:text-left">
               
               <div className="space-y-8">
-                <h5 className="font-serif italic text-2xl text-primary tracking-tight">Opening Hours</h5>
-                <ul className="space-y-6 text-[12px] font-bold uppercase tracking-[0.2em] text-white/50 max-w-[300px] mx-auto md:mx-0">
+                <h5 className="font-serif text-[#C5A059] uppercase tracking-[0.3rem]">Opening Hours</h5>
+                <ul className="space-y-6 text-[12px] font-bold uppercase tracking-[0.2em] text-white/50 max-w-[300px] mx-auto md:mx-0 leading-[2]">
                   <li className="flex justify-between border-b border-white/5 pb-4">
                     <span className="font-sans">Wed – Sun</span>
                     <div className="flex flex-col items-end">
@@ -625,8 +626,8 @@ export default function Home() {
               </div>
 
               <div className="space-y-8">
-                <h5 className="font-serif italic text-2xl text-primary tracking-tight">Contact Us</h5>
-                <ul className="space-y-8 text-[12px] font-bold uppercase tracking-[0.2em] text-white/50">
+                <h5 className="font-serif text-[#C5A059] uppercase tracking-[0.3rem]">Contact Us</h5>
+                <ul className="space-y-8 text-[12px] font-bold uppercase tracking-[0.2em] text-white/50 leading-[2]">
                   <li>
                     <p className="text-white text-2xl font-serif italic mb-1 tracking-tight">050 33 30 60</p>
                     <p className="text-[9px] opacity-40 uppercase tracking-[0.4em] font-sans">Bruges Direct Line</p>
@@ -639,8 +640,8 @@ export default function Home() {
               </div>
 
               <div className="space-y-8 md:text-right">
-                <h5 className="font-serif italic text-2xl text-primary tracking-tight">Our Home</h5>
-                <p className="text-white/50 text-[12px] font-bold uppercase tracking-[0.25em] leading-loose mb-10 font-sans">
+                <h5 className="font-serif text-[#C5A059] uppercase tracking-[0.3rem]">Our Home</h5>
+                <p className="text-white/50 text-[12px] font-bold uppercase tracking-[0.25em] leading-[2] mb-10 font-sans">
                   Academiestraat 23<br />
                   8000 Brugge, Belgium
                 </p>
@@ -670,34 +671,10 @@ export default function Home() {
               <CinematicSignature />
             </div>
 
-            <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-10">
-              <div className="flex flex-col items-center md:items-start gap-4">
-                <div className="flex flex-col gap-1">
-                  <p className="text-[8px] font-bold uppercase tracking-[0.6em] text-white/30 text-center md:text-left font-sans">
-                    © 2026 TRATTORIA TRIUM · REFINING TRADITION
-                  </p>
-                  <ClientOnly>
-                    <div className="flex items-center justify-center md:justify-start gap-3 mt-4 group cursor-default">
-                      <div className="relative flex items-center justify-center w-5 h-5">
-                        <Sparkles className="text-primary/40 w-2.5 h-2.5 absolute group-hover:text-primary transition-all duration-1000 group-hover:scale-125" />
-                        <motion.div
-                          className="absolute inset-0 border border-primary/10 rounded-full"
-                          animate={{ scale: [1, 1.8, 1], opacity: [0.3, 0, 0.3] }}
-                          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                        />
-                      </div>
-                      <span className="text-[7px] font-black uppercase tracking-[0.8em] text-white/10 group-hover:text-white/40 transition-all duration-1000">
-                        Digital Soul by Antigravity
-                      </span>
-                    </div>
-                  </ClientOnly>
-                </div>
-              </div>
-              <div className="flex gap-12 font-sans">
-                {["Privacy", "Terms"].map(p => (
-                  <p key={p} className="text-[8px] font-bold uppercase tracking-[0.4em] text-white/40 transition-colors hover:text-white cursor-pointer">{p}</p>
-                ))}
-              </div>
+            <div className="pt-12 border-t border-white/5 flex flex-col items-center justify-center gap-4">
+              <p className="text-[10px] text-[#808080] uppercase tracking-widest font-sans text-center leading-[2]">
+                © 2026 TRATTORIA TRIUM · REFINING TRADITION
+              </p>
             </div>
           </div>
         </footer>
