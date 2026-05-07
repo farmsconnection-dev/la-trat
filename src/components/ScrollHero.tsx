@@ -92,7 +92,6 @@ export default function ScrollHero({
         playsInline
         onLoadedData={() => setVideoLoaded(true)}
         className="hero-video fixed top-0 left-0 w-full h-full object-cover z-[-1] scale-110"
-        style={{ filter: "brightness(1.2) contrast(1.1) saturate(1.1)" }}
       >
         <source src="/video/Pizza_ingredients_falling.mp4" type="video/mp4" />
       </video>
@@ -101,9 +100,9 @@ export default function ScrollHero({
       <div className="relative z-30 h-full flex flex-col items-center justify-center px-6 text-center">
         <div className="hero-content space-y-10 md:space-y-16">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0.8, y: 5 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.5 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
           >
             <span className="inline-block px-8 py-3.5 rounded-full border border-white/5 text-primary text-[10px] md:text-[12px] font-black uppercase tracking-[0.6em] backdrop-blur-xl bg-white/[0.03] inner-elevate" style={{ textShadow: "0 0 20px rgba(0,0,0,0.8)" }}>
               The Art of Sicilian Fire
@@ -111,9 +110,9 @@ export default function ScrollHero({
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0.8, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.4, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
             <h1 className="text-[4rem] md:text-[8rem] xl:text-[10rem] font-serif leading-[0.8] tracking-[0.25rem] uppercase text-gold-noir drop-shadow-[0_15px_45px_rgba(0,0,0,1)]">
               Fired in
@@ -128,9 +127,9 @@ export default function ScrollHero({
           </motion.div>
 
           <motion.p 
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 0.6 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1.2, delay: 1.3 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
             className="text-noir-silver/60 text-[11px] md:text-[14px] max-w-lg mx-auto leading-relaxed uppercase tracking-[0.5em] font-sans italic"
             style={{ textShadow: "0 4px 15px rgba(0,0,0,0.9)" }}
           >
@@ -138,9 +137,9 @@ export default function ScrollHero({
           </motion.p>
 
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0.7, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 1.6 }}
+            transition={{ duration: 0.8, delay: 1 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-10 pt-8"
           >
             <button

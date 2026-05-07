@@ -206,7 +206,11 @@ function CurtainReveal({ onComplete }: { onComplete: () => void }) {
   }, { scope: container });
 
   return (
-    <div ref={container} className="fixed inset-0 z-[9999] flex items-center justify-center pointer-events-none overflow-hidden bg-transparent">
+    <div 
+      ref={container} 
+      className="fixed inset-0 z-[9999] flex items-center justify-center pointer-events-none overflow-hidden bg-transparent"
+      style={{ animation: 'curtainCssFallback 6s forwards' }}
+    >
       <div className="absolute inset-0 flex overflow-hidden">
         <div ref={leftCurtain} className="h-full w-1/2 bg-background-dark origin-left" />
         <div ref={rightCurtain} className="h-full w-1/2 bg-background-dark origin-right" />
@@ -325,7 +329,7 @@ export default function Home() {
 
   return (
     <SmoothScroll>
-    <div className="relative flex min-h-screen w-full flex-col bg-transparent selection:bg-primary/20 selection:text-white overflow-x-hidden">
+    <div className="relative flex min-h-screen w-full flex-col bg-[#0a0a0a] selection:bg-primary/20 selection:text-white overflow-x-hidden">
       {showCurtain && <CurtainReveal onComplete={() => setShowCurtain(false)} />}
 
       <nav className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-700 ease-[0.25,0.46,0.45,0.94] ${isScrolled ? "p-4" : "p-6 md:p-12"}`}>

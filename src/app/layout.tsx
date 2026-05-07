@@ -22,8 +22,33 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
           rel="stylesheet"
         />
+        {/* Critical CSS: ensure hero video + content are visible before JS hydrates */}
+        <style dangerouslySetInnerHTML={{ __html: `
+          /* Guarantee the video layer is always visible */
+          .hero-video {
+            opacity: 1 !important;
+            filter: brightness(1.2) contrast(1.1) saturate(1.1);
+          }
+
+          /* Body must have a dark bg, never transparent */
+          body {
+            background-color: #0a0a0a;
+          }
+
+          /* CSS-only curtain timeout: if JS hasn't removed the curtain after 5s, fade it away */
+          @keyframes curtainCssFallback {
+            0%, 90% { opacity: 1; }
+            100%    { opacity: 0; pointer-events: none; }
+          }
+
+          /* The hero overlay must start at correct transparency, not solid black */
+          .hero-overlay {
+            background: rgba(0,0,0,0.3) !important;
+            opacity: 1 !important;
+          }
+        ` }} />
       </head>
-      <body className="overflow-x-hidden" suppressHydrationWarning>
+      <body className="overflow-x-hidden bg-[#0a0a0a]" suppressHydrationWarning>
         {children}
       </body>
     </html>
