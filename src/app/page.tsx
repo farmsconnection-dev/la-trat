@@ -273,8 +273,8 @@ function FooterAnimatedLogo() {
   return (
     <div ref={ref} className="flex flex-col items-center justify-center py-20 relative">
       <motion.div 
-        initial={{ y: -15, opacity: 0 }}
-        animate={isInView ? { y: 15, opacity: 1 } : { y: -15, opacity: 0 }}
+        initial={{ y: 0, opacity: 0 }}
+        animate={isInView ? { y: 15, opacity: 1 } : { y: 0, opacity: 0 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
         className="w-[150px] h-[2px] flex mb-4 z-10"
       >
@@ -602,23 +602,23 @@ export default function Home() {
         </section>
 
         {/* ─── REFINED DARK FOOTER ─── */}
-        <footer id="location" className="bg-[#0a0a0a] text-white pt-[100px] pb-12 md:pb-16 relative overflow-visible border-t border-white/5 z-20">
+        <footer id="location" className="bg-[#0a0a0a] text-white pt-[100px] relative overflow-visible z-20">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/[0.03] blur-[140px] rounded-full translate-x-1/2 -translate-y-1/2" />
 
           <div className="relative max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 py-12 md:py-20 text-center md:text-left">
               
               <div className="space-y-8">
-                <h5 className="font-serif text-[#C5A059] uppercase tracking-[0.3rem]">Opening Hours</h5>
-                <ul className="space-y-6 text-[12px] font-bold uppercase tracking-[0.2em] text-white/50 max-w-[300px] mx-auto md:mx-0 leading-[2]">
+                <h5 className="font-serif text-[0.75rem] text-[#888] uppercase tracking-[0.35rem]">Opening Hours</h5>
+                <ul className="space-y-6 text-[12px] font-bold uppercase tracking-[0.2em] text-[#F5F5DC] max-w-[300px] mx-auto md:mx-0 leading-[1.8]">
                   <li className="flex justify-between border-b border-white/5 pb-4">
                     <span className="font-sans">Wed – Sun</span>
                     <div className="flex flex-col items-end">
-                      <span className="text-[#FDFDD0] font-serif italic text-xl">09:30 – 15:00</span>
-                      <span className="text-[#FDFDD0] font-serif italic text-xl">18:00 – 21:30</span>
+                      <span className="font-serif italic text-xl">09:30 – 15:00</span>
+                      <span className="font-serif italic text-xl">18:00 – 21:30</span>
                     </div>
                   </li>
-                  <li className="flex justify-between text-white/20 italic">
+                  <li className="flex justify-between italic opacity-60">
                     <span className="font-sans">Mon – Tue</span>
                     <span className="font-serif capitalize">Closed</span>
                   </li>
@@ -626,22 +626,22 @@ export default function Home() {
               </div>
 
               <div className="space-y-8">
-                <h5 className="font-serif text-[#C5A059] uppercase tracking-[0.3rem]">Contact Us</h5>
-                <ul className="space-y-8 text-[12px] font-bold uppercase tracking-[0.2em] text-white/50 leading-[2]">
+                <h5 className="font-serif text-[0.75rem] text-[#888] uppercase tracking-[0.35rem]">Contact Us</h5>
+                <ul className="space-y-8 text-[12px] font-bold uppercase tracking-[0.2em] text-[#F5F5DC] leading-[1.8]">
                   <li>
-                    <p className="text-white text-2xl font-serif italic mb-1 tracking-tight">050 33 30 60</p>
+                    <p className="text-2xl font-serif italic mb-1 tracking-tight">050 33 30 60</p>
                     <p className="text-[9px] opacity-40 uppercase tracking-[0.4em] font-sans">Bruges Direct Line</p>
                   </li>
                   <li>
-                    <p className="text-white text-2xl font-serif italic mb-1 tracking-tight lowercase underline decoration-primary/30 underline-offset-8">trium@skynet.be</p>
+                    <p className="text-2xl font-serif italic mb-1 tracking-tight lowercase underline decoration-primary/30 underline-offset-8">trium@skynet.be</p>
                     <p className="text-[9px] opacity-40 uppercase tracking-[0.4em] font-sans">General Inquiries</p>
                   </li>
                 </ul>
               </div>
 
               <div className="space-y-8 md:text-right">
-                <h5 className="font-serif text-[#C5A059] uppercase tracking-[0.3rem]">Our Home</h5>
-                <p className="text-white/50 text-[12px] font-bold uppercase tracking-[0.25em] leading-[2] mb-10 font-sans">
+                <h5 className="font-serif text-[0.75rem] text-[#888] uppercase tracking-[0.35rem]">Our Home</h5>
+                <p className="text-[#F5F5DC] text-[12px] font-bold uppercase tracking-[0.25em] leading-[1.8] mb-10 font-sans">
                   Academiestraat 23<br />
                   8000 Brugge, Belgium
                 </p>
@@ -670,12 +670,13 @@ export default function Home() {
             <div className="mt-16 mb-8 w-full">
               <CinematicSignature />
             </div>
-
-            <div className="pt-12 border-t border-white/5 flex flex-col items-center justify-center gap-4">
-              <p className="text-[10px] text-[#808080] uppercase tracking-widest font-sans text-center leading-[2]">
-                © 2026 TRATTORIA TRIUM · REFINING TRADITION
-              </p>
-            </div>
+          </div>
+          
+          {/* Full Width Bottom Bar */}
+          <div className="w-full border-t border-[#333] py-6 flex justify-center">
+            <p className="text-[10px] text-[#808080] uppercase tracking-widest font-sans text-center">
+              © 2026 TRATTORIA TRIUM | BRUGES
+            </p>
           </div>
         </footer>
       </main>
@@ -699,7 +700,7 @@ export default function Home() {
           >
             <motion.button
               onClick={() => setIsReservationOpen(true)}
-              className="w-full bg-primary text-black py-6 md:py-8 rounded-full font-black text-[10px] md:text-[11px] uppercase tracking-[0.4em] shadow-[0_30px_60px_-15px_rgba(255,191,0,0.4)] hover:bg-primary-hover transition-all active:scale-95 pointer-events-auto border border-primary/20"
+              className="w-full bg-transparent text-[#C5A059] border border-[#C5A059] py-6 md:py-8 rounded-full font-black text-[10px] md:text-[11px] uppercase tracking-[0.4em] shadow-[0_30px_60px_-15px_rgba(255,191,0,0.2)] hover:bg-[#C5A059] hover:text-black transition-all duration-300 active:scale-95 pointer-events-auto"
               whileHover={{ y: -5, scale: 1.02 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
